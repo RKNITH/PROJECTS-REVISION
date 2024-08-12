@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>NUMBER-GUESSING-GAME</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-container">
+            <p id="heading">I AM THINKING A NUMBER BETWEEN 1 AND 100, GUESS IT..</p>
+            <input type="number" placeholder="write number here.." id="inp" />
+            <div id="selection">
+                <p>SELECT DIFFICULTY LEVEL:</p>
+                <select id="select">
+                    <option value="1">EASY</option>
+                    <option value="2">HARD</option>
+                </select>
+            </div>
+            <div class="attempt-counter">
+                <p>ATTEMPTS LEFT:</p>
+                <div id="left">0</div>
+            </div>
+            <div class="button">
+                <button id="reset">RESET</button>
+                <button id="submit">SUBMIT</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+
+</body>
+
+
+
+
+</html>

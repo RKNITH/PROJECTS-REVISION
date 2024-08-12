@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: darkgray;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+#heading {
+    color: blueviolet;
+    font-family: cursive;
+    margin-bottom: 20px;
+}
+
+#inp {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 30px;
+}
+
+#selection {
+    margin-block: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(34, 11, 117);
+    font-size: 30px;
+}
+
+select {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.attempt-counter {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(34, 11, 117);
+    font-size: 30px;
+}
+
+#left {
+    background-color: cornflowerblue;
+    padding: 8px 10px;
+}
+
+.button {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+#reset {
+    background-color: darkslateblue;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+#reset:hover {
+    background-color: rgb(100, 87, 189);
+}
+
+#submit {
+    background-color: darkolivegreen;
+    color: wheat;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: rgb(67, 97, 15);
+}
+
+@media screen and (max-width:600px) {
+    .main-container {
+        max-width: 90%;
+    }
+
+    #inp,
+    #selection,
+    .attempt-counter {
+        font-size: 20px;
+    }
+
+
+
+    .button {
+        display: flex;
+        flex-direction: column;
+        min-width: 80%;
+    }
+
+    button {
+        min-width: 90%;
+    }
+
+}
