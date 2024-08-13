@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: grey;
+    min-height: 100vh;
+
+}
+
+.main-container {
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 70%;
+    min-height: 100vh;
+    box-shadow: 10px 3px 0px rgba(112, 190, 212, 0.7);
+
+
+
+}
+
+.input-container {
+    margin-top: 20px;
+    min-width: 90%;
+
+}
+
+#inp {
+    padding: 10px 20px;
+    border: none;
+    width: 80%;
+    margin-inline: 20px;
+    border-radius: 6px;
+    font-size: 20px;
+    outline: none;
+
+}
+
+#add {
+    padding: 13px 20px;
+    border-radius: 4px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    cursor: pointer;
+}
+
+#add:hover {
+    background-color: rgb(82, 6, 153);
+}
+
+/* #result {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 30px;
+    margin-top: 50px;
+    font-size: 24px;
+    flex-direction: column;
+} */
+
+
+ul {
+    width: 100%;
+    max-width: 450px;
+    margin-left: 20px;
+    margin-top: 30px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+ul li {
+    list-style: none;
+    cursor: pointer;
+    border: 0.125px solid #a19f9f;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: #fff;
+    margin-block-end: 12px;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.5s;
+
+}
+
+ul li:hover {
+    background-color: #bcacac;
+}
+
+ul li p {
+    flex-grow: 1;
+    padding: 2px;
+}
+
+.delBtn {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    margin-inline: 2px;
+
+}
+
+.del {
+
+    color: #ff0000;
+}
+
+.edit {
+    color: #008000;
+}
+
+@media screen and (max-width:600px) {
+    .main-container {
+        min-width: 97%;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #inp {
+        min-width: 95%;
+        margin-bottom: 20px;
+    }
+
+    #add {
+        max-width: 95%;
+        margin-left: 20px;
+    }
+
+    ul {
+        max-width: 95%;
+    }
+
+}
