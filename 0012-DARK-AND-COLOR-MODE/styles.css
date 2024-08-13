@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#btn {
+    background-color: blue;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
