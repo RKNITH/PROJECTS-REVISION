@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>TEMPERATURE-CONVERTOR</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-container">
+            <div class="input-container">
+                <div class="input">
+                    <input id="inp" type="number" placeholder="enter temperature value here." />
+                    <select id="selection">
+                        <option value="1">CELCIUS</option>
+                        <option value="2">FAHRENHEIT</option>
+                        <option value="3">KELVIN</option>
+                    </select>
+                </div>
+                <div class="output">
+                    <input id="display" type="number" readonly />
+                    <select id="result">
+                        <option value="1">CELCIUS</option>
+                        <option value="2">FAHRENHEIT</option>
+                        <option value="3">KELVIN</option>
+                    </select>
+                </div>
+
+            </div>
+            <button id="calculate">CALCULATE</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
