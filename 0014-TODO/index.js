@@ -120,3 +120,118 @@ todoList.addEventListener('click', updateTodo);
 
 //*************************************************
 
+// const inputBox = document.getElementById('inp');
+// const addBtn = document.getElementById('add');
+// const todoList = document.getElementById('result');
+
+// let editTodo = null
+
+// const addTodo = () => {
+//     let inputText = inputBox.value.trim()
+
+//     if (inputText === '') {
+//         alert('Please add todo')
+//         return
+//     }
+//     if (addBtn.innerHTML === 'Edit') {
+//         let oldText = editTodo.querySelector('p').innerHTML
+//         let newText = inputBox.value
+
+//         editTodo.querySelector('p').innerHTML = newText
+//         addBtn.innerHTML = 'Add'
+//         inputBox.value = ''
+//         editTodo = null
+
+//     }
+//     else {
+//         let li = document.createElement('li')
+//         let p = document.createElement('p')
+//         p.innerHTML = inputText
+//         li.append(p)
+
+//         let editBtn = document.createElement('button')
+//         editBtn.classList.add('delBtn', 'edit')
+//         editBtn.innerText = 'Edit'
+//         li.appendChild(editBtn)
+
+//         let deleteBtn = document.createElement('button')
+//         deleteBtn.classList.add('delBtn', 'del')
+//         deleteBtn.innerText = 'Remove'
+//         li.appendChild(deleteBtn)
+
+//         todoList.appendChild(li)
+//         inp.value = ''
+//         saveLocalTodo(inputText)
+
+//     }
+
+
+// }
+
+// const updateTodo = (e) => {
+//     if (e.target.innerHTML === 'Remove') {
+//         todoList.removeChild(e.target.parentElement)
+//     }
+
+//     if (e.target.innerHTML === 'Edit') {
+//         inputBox.value = e.target.parentElement.querySelector('p').innerHTML
+//         inputBox.focus()
+//         addBtn.innerHTML = 'Edit'
+//         editTodo = e.target.parentElement
+//     }
+// }
+
+// const saveLocalTodo = (todo) => {
+//     let todos = []
+//     if (localStorage.getItem(todos) === null) {
+//         todos = []
+//     }
+//     else {
+//         todos = JSON.parse(localStorage.getItem(todos))
+//     }
+//     todos.push(todo)
+//     localStorage.setItem('todos', JSON.stringify(todos))
+// }
+
+// // const getLocalTodos = () => {
+// //     let todos
+// //     if (localStorage.getItem(todos) === null) {
+// //         todos = []
+// //     }
+// //     else {
+// //         todos = JSON.parse(localStorage.getItem(todos))
+
+// //         todos.forEach(todo => {
+// //             let li = document.createElement('li')
+// //             let p = document.createElement('p')
+// //             p.innerHTML = todo
+// //             li.append(p)
+
+// //             let editBtn = document.createElement('button')
+// //             editBtn.classList.add('delBtn', 'edit')
+// //             editBtn.innerText = 'Edit'
+// //             li.appendChild(editBtn)
+
+// //             let deleteBtn = document.createElement('button')
+// //             deleteBtn.classList.add('delBtn', 'del')
+// //             deleteBtn.innerText = 'Remove'
+// //             li.appendChild(deleteBtn)
+
+// //             todoList.appendChild(li)
+
+
+// //         });
+// //     }
+
+
+
+// // }
+
+
+
+
+
+
+// // document.addEventListener('DOMContentLoaded', getLocalTodos)
+// todoList.addEventListener('click', updateTodo)
+// addBtn.addEventListener('click', addTodo)

@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.heading h1 {
+    font-size: 1.8em;
+    color: blueviolet;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.text-container textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: #fafafa;
+    resize: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.text-container textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.button-container {}
+
+.button-container button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+
+#convertor:hover {
+    background-color: #0056b3;
+}
+
+#download {
+    background-color: cadetblue;
+}
+
+#download:hover {
+    background-color: rgb(40, 139, 143);
+}
+
+#fast {
+    background-color: rebeccapurple;
+}
+
+#fast:hover {
+    background-color: rgb(49, 8, 90);
+}
+
+#faster {
+    background-color: brown;
+}
+
+#faster:hover {
+    background-color: rgb(107, 7, 7);
+}
+
+#slower {
+    background-color: gray;
+}
+
+#slower:hover {
+    background-color: rgb(77, 75, 75);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .heading h1 {
+        font-size: 1.5em;
+    }
+
+    .text-container textarea {
+        font-size: 0.9em;
+    }
+
+    .button-container button {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        max-width: 95%;
+    }
+
+    .heading h1 {
+        font-size: 1.3em;
+    }
+
+    .text-container textarea {
+        font-size: 0.85em;
+        padding: 10px;
+    }
+
+    .button-container button {
+        font-size: 0.85em;
+        padding: 8px 12px;
+    }
+}

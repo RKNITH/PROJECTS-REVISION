@@ -102,6 +102,106 @@
 
 // ************************************************************
 
+// const header = document.getElementById('header')
+// const min = document.getElementById('min')
+// const sec = document.getElementById('sec')
+// const start = document.getElementById('start')
+// const restart = document.getElementById('restart')
+// const pause = document.getElementById('pause')
+// const round = document.getElementById('round')
+
+// const WORKING_TIME = 6
+// const BREAKING_TIME = 5
+
+// let workingTime = WORKING_TIME
+// let breakTime = BREAKING_TIME
+
+// let intervalId;
+// let isWorking = true
+// let rounds = 0
+
+// const formateTime = (time) => {
+//     return time < 10 ? `0${time}` : time
+// }
+
+// function displayTime(workingTime) {
+//     let minute = Math.floor(workingTime / 60)
+//     let second = Math.floor(workingTime % 60)
+
+//     min.innerHTML = formateTime(minute)
+//     sec.innerHTML = (formateTime(second))
+// }
+// displayTime(workingTime)
+
+// function startTimer() {
+//     header.innerHTML = 'Working Time'
+//     if (!intervalId) {
+//         intervalId = setInterval(() => {
+//             if (isWorking) {
+//                 if (workingTime >= 0) {
+//                     displayTime(workingTime)
+//                     workingTime--
+//                 }
+//                 else {
+//                     header.innerHTML = 'Break Time'
+//                     workingTime = WORKING_TIME
+//                     isWorking = false
+//                 }
+//             }
+//             else {
+//                 if (breakTime >= 0) {
+//                     displayTime(breakTime)
+//                     breakTime--
+//                 }
+//                 else {
+//                     header.innerHTML = 'Work Time'
+//                     breakTime = BREAKING_TIME
+//                     isWorking = false
+
+//                     rounds++
+//                     round.innerHTML = `you have completed ${rounds} rounds`
+//                 }
+//             }
+
+//         }, 1000)
+//     }
+
+
+// }
+
+
+
+// function pauseTimer() {
+//     if (intervalId) {
+//         clearInterval(intervalId)
+//         header.innerHTML = 'Paused'
+//         intervalId = !intervalId
+//     }
+
+// }
+
+
+// function restartTimer() {
+//     if (intervalId) {
+//         clearInterval(intervalId)
+//         header.innerHTML = 'POMODORO'
+//         let timeValue = 0
+//         displayTime(timeValue)
+//         intervalId = !intervalId
+//         workingTime = WORKING_TIME
+//         breakTime = BREAKING_TIME
+//     }
+
+// }
+
+
+
+// start.addEventListener('click', startTimer)
+// restart.addEventListener('click', restartTimer)
+// pause.addEventListener('click', pauseTimer)
+
+// *****************************************************************************
+
 const header = document.getElementById('header')
 const min = document.getElementById('min')
 const sec = document.getElementById('sec')
@@ -121,19 +221,21 @@ let isWorking = true
 let rounds = 0
 
 const formateTime = (time) => {
-    return time < 10 ? `0${time}` : time
+    return time < 10 ? `0${time}` : `${time}`
 }
 
-function displayTime(workingTime) {
-    let minute = Math.floor(workingTime / 60)
-    let second = Math.floor(workingTime % 60)
+const displayTime = (workingTime) => {
+    let mins = Math.floor(workingTime / 60)
+    let secs = Math.floor(workingTime % 60)
 
-    min.innerHTML = formateTime(minute)
-    sec.innerHTML = (formateTime(second))
+    min.innerHTML = formateTime(mins)
+    sec.innerHTML = formateTime(secs)
+
+
 }
 displayTime(workingTime)
 
-function startTimer() {
+const startTimer = () => {
     header.innerHTML = 'Working Time'
     if (!intervalId) {
         intervalId = setInterval(() => {
@@ -144,9 +246,10 @@ function startTimer() {
                 }
                 else {
                     header.innerHTML = 'Break Time'
-                    workingTime = WORKING_TIME
                     isWorking = false
+                    workingTime = WORKING_TIME
                 }
+
             }
             else {
                 if (breakTime >= 0) {
@@ -155,47 +258,86 @@ function startTimer() {
                 }
                 else {
                     header.innerHTML = 'Work Time'
-                    breakTime = BREAKING_TIME
                     isWorking = false
+                    breakTime = BREAKING_TIME
 
                     rounds++
-                    round.innerHTML = `you have completed ${rounds} rounds`
+                    round.innerHTML = `You have completed ${rounds}`
+
                 }
+
             }
 
         }, 1000)
     }
 
 
-}
 
 
-
-function pauseTimer() {
-    if (intervalId) {
-        clearInterval(intervalId)
-        header.innerHTML = 'Paused'
-        intervalId = !intervalId
-    }
 
 }
 
-
-function restartTimer() {
+const restartTimer = () => {
     if (intervalId) {
         clearInterval(intervalId)
-        header.innerHTML = 'POMODORO'
-        let timeValue = 0
-        displayTime(timeValue)
-        intervalId = !intervalId
         workingTime = WORKING_TIME
         breakTime = BREAKING_TIME
+        header.innerHTML = 'Pomodoro'
+        displayTime(workingTime)
+        rounds = 0
+        intervalId = !intervalId
     }
+
 
 }
 
+const pauseTimer = () => {
+    if (intervalId) {
+        clearInterval(intervalId)
+        intervalId = !intervalId
+    }
+
+}
 
 
 start.addEventListener('click', startTimer)
 restart.addEventListener('click', restartTimer)
 pause.addEventListener('click', pauseTimer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

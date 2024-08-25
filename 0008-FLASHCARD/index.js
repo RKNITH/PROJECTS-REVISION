@@ -141,6 +141,39 @@ const data = [
     }
 ]
 
+// const question = document.getElementById('question')
+// const answer = document.getElementById('answer')
+// const next = document.getElementById('next')
+// const review = document.getElementById('review')
+// const answerContainer = document.getElementById('answer-container')
+
+// let currentIndex = 0
+// function showData(index) {
+//     const flashcard = data[index]
+//     question.innerHTML = flashcard.question
+//     answer.innerHTML = flashcard.answer
+//     answerContainer.style.display = 'none'
+
+
+// }
+
+// review.addEventListener('click', () => {
+//     answerContainer.style.display = 'block'
+
+// })
+
+// next.addEventListener('click', () => {
+//     currentIndex = (currentIndex + 1) % data.length
+//     showData(currentIndex)
+
+
+// })
+
+// showData(currentIndex)
+
+// ************************************************************
+
+
 const question = document.getElementById('question')
 const answer = document.getElementById('answer')
 const next = document.getElementById('next')
@@ -148,27 +181,32 @@ const review = document.getElementById('review')
 const answerContainer = document.getElementById('answer-container')
 
 let currentIndex = 0
-function showData(index) {
-    const flashcard = data[index]
-    question.innerHTML = flashcard.question
-    answer.innerHTML = flashcard.answer
-    answerContainer.style.display = 'none'
+function showQuestion(index) {
+    let quizData = data[index]
+    let questionData = quizData.question
+    let answerData = quizData.answer
+    let questionId = quizData.id
+
+    question.innerHTML = questionData
+    answer.innerHTML = answerData
 
 
 }
 
-review.addEventListener('click', () => {
-    answerContainer.style.display = 'block'
-
-})
 
 next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % data.length
-    showData(currentIndex)
+    currentIndex = (currentIndex + 1) % (data.length)
+    showQuestion(currentIndex)
+    answerContainer.style.display = 'none'
 
 
 })
 
-showData(currentIndex)
 
+
+review.addEventListener('click', () => {
+    showQuestion(currentIndex)
+    answerContainer.style.display = 'block'
+})
+showQuestion(currentIndex)
 

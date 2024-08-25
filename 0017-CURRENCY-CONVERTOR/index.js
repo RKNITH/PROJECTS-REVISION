@@ -3,6 +3,7 @@ const result = document.getElementById('result')
 const selection = document.getElementById('selection')
 const selected = document.getElementById('selected')
 const convert = document.getElementById('convert')
+const finalResult = document.getElementById('finalResult')
 
 
 const countries = [
@@ -275,26 +276,18 @@ const currencyConvertor = async () => {
     let outputCurrency = selected.value
 
     try {
-
-
         const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${inputCurrency}`);
         const data = await response.json();
         const conversionRate = data.rates[outputCurrency];
-
         const convertedAmount = (inputValue * conversionRate).toFixed(2);
-
         result.value = convertedAmount
-        result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`
+        finalResult.innerHTML = `${inputValue} ${inputCurrency} = ${convertedAmount} ${outputCurrency}`
 
     }
     catch (error) {
         result.textContent = "error"
 
     }
+
 }
-
-
-
-
-
 convert.addEventListener('click', currencyConvertor)

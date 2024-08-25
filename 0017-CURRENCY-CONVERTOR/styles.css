@@ -81,6 +81,14 @@ button:hover {
     background-color: #218838;
 }
 
+#finalResult {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    /* padding: 10px; */
+    border-radius: 4px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {

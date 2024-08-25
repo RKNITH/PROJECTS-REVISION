@@ -1,5 +1,5 @@
-const result = document.getElementById('result')
-const next = document.getElementById('next')
+// const result = document.getElementById('result')
+// const next = document.getElementById('next')
 
 const quotes = [
     "India is a land of diversity and unity – Rabindranath Tagore",
@@ -55,17 +55,40 @@ const quotes = [
     "India is a land of boundless opportunities – Unknown",
     "The heart of India beats in its people – Unknown"
 ];
-let quotesLength = quotes.length
+// let quotesLength = quotes.length
+// let currentIndex = 0
+// function displayQuotes(index) {
+//     let quote = quotes[index]
+//     result.innerHTML = quote
+
+// }
+// displayQuotes(currentIndex)
+
+// next.addEventListener('click', () => {
+//     let randomIndex = Math.floor(Math.random() * quotesLength)
+//     currentIndex = randomIndex
+//     displayQuotes(currentIndex)
+// })
+
+
+
+// **********************************************
+const result = document.getElementById('result')
+const next = document.getElementById('next')
+
+
+
 let currentIndex = 0
+
 function displayQuotes(index) {
     let quote = quotes[index]
-    result.innerHTML = quote
 
+    result.innerHTML = quote
 }
-displayQuotes(currentIndex)
 
 next.addEventListener('click', () => {
-    let randomIndex = Math.floor(Math.random() * quotesLength)
-    currentIndex = randomIndex
+    currentIndex = (currentIndex + 1) % (quotes.length)
     displayQuotes(currentIndex)
 })
+
+displayQuotes(currentIndex)

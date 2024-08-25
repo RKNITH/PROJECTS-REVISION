@@ -1,0 +1,280 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styling with linear gradient background */
+body {
+    background: linear-gradient(135deg, #4e89ae, #d4e1e9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+}
+
+/* Main container with box shadow */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Timer styling with circular border and subtle pulse animation */
+.timer-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff6b6b;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    animation: pulse 1s infinite ease-in-out;
+}
+
+/* Pulse animation for the timer */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Question container */
+.question-container {
+    background-color: #4e89ae;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 5px solid #3b6a8e;
+}
+
+/* Option container */
+.option-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.option-container span {
+    background-color: #3b6a8e;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: black;
+    text-align: center;
+    font-weight: 900;
+    font-family: cursive;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #edf7fa;
+    border-top: 5px solid #d4e1e9;
+}
+
+.button-container button {
+    padding: 15px 40px;
+    /* Increased padding */
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+#start {
+    background-color: #3498db;
+}
+
+#start:hover {
+    background-color: #2980b9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+#review {
+    background-color: #e74c3c;
+}
+
+#review:hover {
+    background-color: #c0392b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+#skip {
+    background-color: #f39c12;
+}
+
+#skip:hover {
+    background-color: #e67e22;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+#submit {
+    background-color: #2ecc71;
+}
+
+#submit:hover {
+    background-color: #27ae60;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Result container */
+#result {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4e89ae;
+}
+
+#question {
+    max-height: 100vh;
+    /* Ensure no height restriction */
+    overflow: visible;
+    /* Ensure overflow is visible */
+    padding: 10px;
+}
+
+.main-container {
+    max-height: 100vh;
+    /* Limit height to viewport */
+    overflow-y: scroll;
+    /* Enable scrolling */
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+
+
+.review-question {
+    margin-block: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+
+    color: blueviolet;
+}
+
+.review-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.review-options div {
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.review-options div.correct {
+    background-color: lightgreen;
+    border-color: green;
+}
+
+.review-options div.incorrect {
+    background-color: lightcoral;
+    border-color: red;
+}
+
+/* New styling for unattempted questions */
+.review-options div.unattempted {
+    background-color: #ffcccb;
+    border-color: #ff6666;
+}
+
+.unattempted {
+    background-color: #ffeeba;
+    /* Light yellow background for unattempted questions */
+    border-left: 5px solid #ffc107;
+    /* Yellow border to highlight */
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* Ensure the review section takes up the necessary space */
+.review-container {
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .timer-container {
+        font-size: 1rem;
+        padding: 8px12px;
+    }
+
+    .question-container {
+        font-size: 1.3rem;
+    }
+
+    .option-containerbutton {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-containerbutton {
+        padding: 10px;
+        width: 100%;
+    }
+}
