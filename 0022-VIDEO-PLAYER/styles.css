@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.video-player-container {
+    background-color: #282828;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.control-btn {
+    background-color: #1DB954;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control-btn:hover {
+    background-color: #078b35;
+}
+
+.seek-bar,
+.volume-bar {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.seek-bar {
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #1DB954;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seek-bar::-webkit-slider-thumb:hover {
+    background-color: #035c22;
+}
+
+.volume-bar {
+    appearance: none;
+    width: 100px;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+}
+
+.volume-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #1DB954;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.volume-bar::-webkit-slider-thumb:hover {
+    background-color: #045f24;
+}
+
+.time {
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .seek-bar,
+    .volume-bar {
+        margin: 10px 0;
+        width: 100%;
+    }
+}

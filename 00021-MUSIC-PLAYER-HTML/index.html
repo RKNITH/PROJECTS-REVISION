@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Audio Player</title>
+</head>
+
+<body>
+    <div class="main">
+        <audio controls>
+            <source src="./1.mp3" type="audio/mp3">
+        </audio>
+        <audio controls>
+            <source src="./2.mp3" type="audio/mp3">
+        </audio>
+        <audio controls>
+            <source src="./3.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Audio Player</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="audio-container">
+            <audio id="audio1" controls>
+                <source src="./1.mp3" type="audio/mp3">
+            </audio>
+            <div class="speed-controls">
+                <button onclick="setSpeed('audio1', 1)">1x</button>
+                <button onclick="setSpeed('audio1', 1.5)">1.5x</button>
+                <button onclick="setSpeed('audio1', 2)">2x</button>
+                <button onclick="setSpeed('audio1', 3)">3x</button>
+                <button onclick="setSpeed('audio1', 4)">4x</button>
+                <button onclick="setSpeed('audio1', 5)">5x</button>
+            </div>
+        </div>
+
+        <div class="audio-container">
+            <audio id="audio2" controls>
+                <source src="./2.mp3" type="audio/mp3">
+            </audio>
+            <div class="speed-controls">
+                <button onclick="setSpeed('audio2', 1)">1x</button>
+                <button onclick="setSpeed('audio2', 1.5)">1.5x</button>
+                <button onclick="setSpeed('audio2', 2)">2x</button>
+                <button onclick="setSpeed('audio2', 3)">3x</button>
+                <button onclick="setSpeed('audio2', 4)">4x</button>
+                <button onclick="setSpeed('audio2', 5)">5x</button>
+            </div>
+        </div>
+
+        <div class="audio-container">
+            <audio id="audio3" controls>
+                <source src="./3.mp3" type="audio/mp3">
+            </audio>
+            <div class="speed-controls">
+                <button onclick="setSpeed('audio3', 1)">1x</button>
+                <button onclick="setSpeed('audio3', 1.5)">1.5x</button>
+                <button onclick="setSpeed('audio3', 2)">2x</button>
+                <button onclick="setSpeed('audio3', 3)">3x</button>
+                <button onclick="setSpeed('audio3', 4)">4x</button>
+                <button onclick="setSpeed('audio3', 5)">5x</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setSpeed(audioId, speed) {
+            const audio = document.getElementById(audioId);
+            audio.playbackRate = speed;
+        }
+    </script>
+</body>
+
+</html>

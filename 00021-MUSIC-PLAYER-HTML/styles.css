@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.main {
+    background-color: gray;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 10px;
+    color: cadetblue;
+    cursor: pointer;
+}
