@@ -66,6 +66,66 @@
 
 
 // ************************************************************
+// const eventTime = document.getElementById('event-time')
+// const hour = document.getElementById('hour')
+// const min = document.getElementById('min')
+// const sec = document.getElementById('sec')
+// const start = document.getElementById('start')
+// const pause = document.getElementById('pause')
+// const restart = document.getElementById('restart')
+
+
+// let timerId
+
+// const formateTime = (time) => {
+//     return time < 10 ? `0${time}` : `${time}`
+// }
+
+// function displayTime(time) {
+//     let secs = Math.floor(time % 60)
+//     let mins = Math.floor(time / 60)
+//     let hours = Math.floor(time / 60 / 60)
+
+//     hour.innerHTML = (formateTime(hours))
+//     min.innerHTML = (formateTime(mins))
+//     sec.innerHTML = (formateTime(secs))
+// }
+
+
+
+// start.addEventListener('click', () => {
+//     let timerValue = eventTime.value
+//     displayTime(timerValue)
+//     if (isNaN(timerValue) || timerValue <= 0) {
+//         alert('please enter valid timer value')
+//         return
+//     }
+//     timerId = setInterval(() => {
+//         timerValue--
+//         if (timerValue < 0) {
+//             alert('TIMES UP')
+//             clearInterval(timerId)
+//         }
+//         displayTime(timerValue)
+//     }, 1000)
+// })
+
+// pause.addEventListener('click', () => {
+//     clearInterval(timerId)
+// })
+
+// restart.addEventListener('click', () => {
+//     clearInterval(timerId) // Stop the countdown
+//     hour.innerHTML = "00"
+//     min.innerHTML = "00"
+//     sec.innerHTML = "00"
+//     eventTime.value = ""
+// })
+
+
+// **************************************************************
+
+
 const eventTime = document.getElementById('event-time')
 const hour = document.getElementById('hour')
 const min = document.getElementById('min')
@@ -81,33 +141,41 @@ const formateTime = (time) => {
     return time < 10 ? `0${time}` : `${time}`
 }
 
-function displayTime(time) {
-    let secs = Math.floor(time % 60)
-    let mins = Math.floor(time / 60)
-    let hours = Math.floor(time / 60 / 60)
 
-    hour.innerHTML = (formateTime(hours))
-    min.innerHTML = (formateTime(mins))
-    sec.innerHTML = (formateTime(secs))
+
+function displayTime(time) {
+    let hours = Math.floor(time / 60 / 60)
+    let minutes = Math.floor(time / 60)
+    let seconds = Math.floor(time % 60)
+
+    hour.innerHTML = formateTime(hours)
+    min.innerHTML = formateTime(minutes)
+    sec.innerHTML = formateTime(seconds)
+
 }
 
-
-
 start.addEventListener('click', () => {
-    let timerValue = eventTime.value
-    displayTime(timerValue)
-    if (isNaN(timerValue) || timerValue <= 0) {
-        alert('please enter valid timer value')
+    let currentTime = eventTime.value.trim()
+    displayTime(currentTime)
+
+    if (isNaN(currentTime) || currentTime < 0) {
+        alert('please add valid time')
         return
     }
     timerId = setInterval(() => {
-        timerValue--
-        if (timerValue < 0) {
-            alert('TIMES UP')
+        currentTime--
+        if (currentTime < 0) {
+            alert('Times Up')
             clearInterval(timerId)
         }
-        displayTime(timerValue)
+        else {
+            displayTime(currentTime)
+        }
+
+
     }, 1000)
+
+
 })
 
 pause.addEventListener('click', () => {
@@ -115,13 +183,11 @@ pause.addEventListener('click', () => {
 })
 
 restart.addEventListener('click', () => {
-    clearInterval(timerId) // Stop the countdown
-    hour.innerHTML = "00"
-    min.innerHTML = "00"
-    sec.innerHTML = "00"
-    eventTime.value = ""
+    clearInterval(timerId)
+    timerId = null
+    displayTime(0)
+    eventTime.value = ''
+
 })
-
-
 
 

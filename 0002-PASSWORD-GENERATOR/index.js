@@ -71,6 +71,87 @@
 
 
 // **************************************************************
+// const inp = document.getElementById('inp')
+// const range = document.getElementById('range')
+// const upper = document.getElementById('upper')
+// const lower = document.getElementById('lower')
+// const num = document.getElementById('num')
+// const symbol = document.getElementById('symbol')
+// const value = document.getElementById('value')
+// const copy = document.getElementById('copy')
+// const generate = document.getElementById('generate')
+
+// const upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+// const lowerLetter = 'abcdefghijklmnopqrstuvwxyz'
+// const number = '1234567890'
+// const sym = '@#$%&'
+
+// let passwordLenght = 0
+
+// range.addEventListener('change', () => {
+//     value.innerHTML = range.value
+//     passwordLenght = range.value
+// })
+
+
+// function shuffleString(str) {
+//     // Convert string to array of characters
+//     let arr = str.split('');
+
+//     // Shuffle the array using Fisher-Yates algorithm
+//     for (let i = arr.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+//     }
+
+//     // Convert the shuffled array back to a string
+//     return arr.join('');
+// }
+
+
+
+// let password = ''
+// function generatePassword() {
+
+//     if (upper.checked) password += upperLetter
+//     if (lower.checked) password += lowerLetter
+//     if (num.checked) password += number
+//     if (symbol.checked) password += sym
+
+//     password = shuffleString(password)
+
+//     password = password.substring(0, passwordLenght)
+
+//     return password
+
+
+
+// }
+
+
+// generate.addEventListener('click', () => {
+//     if (generatePassword() === '') {
+//         alert('please checked any of them')
+//     }
+//     else {
+//         inp.value = generatePassword()
+//     }
+// })
+
+// copy.addEventListener('click', () => {
+//     if (generatePassword() === "=" || inp.value.length == 0) {
+//         alert('first generate password')
+//     }
+//     else {
+//         inp.select()
+//         navigator.clipboard.writeText(inp.value);
+//         alert('password copied')
+
+//     }
+// })
+
+// **********************************************************
+
 const inp = document.getElementById('inp')
 const range = document.getElementById('range')
 const upper = document.getElementById('upper')
@@ -90,64 +171,58 @@ let passwordLenght = 0
 
 range.addEventListener('change', () => {
     value.innerHTML = range.value
-    passwordLenght = range.value
+    passwordLenght = value.innerHTML
 })
 
-
-function shuffleString(str) {
-    // Convert string to array of characters
+const shuffleString = (str) => {
     let arr = str.split('');
-
-    // Shuffle the array using Fisher-Yates algorithm
     for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+        let j = Math.floor(Math.random() * (i + 1));
+        // Swap elements arr[i] and arr[j]
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
-    // Convert the shuffled array back to a string
     return arr.join('');
 }
+
+// console.log(shuffleString('abcd'));
 
 
 
 let password = ''
-function generatePassword() {
-
+const generatePassword = () => {
     if (upper.checked) password += upperLetter
     if (lower.checked) password += lowerLetter
     if (num.checked) password += number
     if (symbol.checked) password += sym
 
     password = shuffleString(password)
-
-    password = password.substring(0, passwordLenght)
-
+    password = password.slice(0, passwordLenght)
     return password
-
-
 
 }
 
 
+
+
 generate.addEventListener('click', () => {
     if (generatePassword() === '') {
-        alert('please checked any of them')
+        alert('please select any of them')
+        return
     }
     else {
         inp.value = generatePassword()
     }
+
 })
 
 copy.addEventListener('click', () => {
-    if (generatePassword() === "=" || inp.value.length == 0) {
+    if (inp.value.length === 0) {
         alert('first generate password')
+        return
     }
-    else {
-        inp.select()
-        navigator.clipboard.writeText(inp.value);
-        alert('password copied')
+    inp.select()
+    navigator.clipboard.writeText(inp.value)
+    alert('password copied')
 
-    }
+
 })
-
-

@@ -24,51 +24,75 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ********************************************************
 
+// const inp = document.getElementById('inp')
+// const buttons = document.querySelectorAll('button')
+
+// buttons.forEach(btn => {
+//     inp.value = ''
+//     btn.addEventListener('click', () => {
+
+//         if (btn.innerHTML === 'AC') {
+//             inp.value = ''
+//         }
+//         else if (btn.innerHTML === 'DEL') {
+//             inp.value = inp.value.substring(0, inp.value.length - 1)
+//         }
+//         else if (btn.innerHTML === "=") {
+//             inp.value = inp.value.replace(/✖/g, '*').replace(/÷/, '/')
+//             inp.value = eval(inp.value)
+//         }
+//         else {
+//             inp.value += btn.innerHTML
+
+//         }
+
+//     })
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// *******************************************************
 const inp = document.getElementById('inp')
 const buttons = document.querySelectorAll('button')
 
 buttons.forEach(btn => {
-    inp.value = ''
     btn.addEventListener('click', () => {
-
-        if (btn.innerHTML === 'AC') {
-            inp.value = ''
-        }
-        else if (btn.innerHTML === 'DEL') {
-            inp.value = inp.value.substring(0, inp.value.length - 1)
-        }
-        else if (btn.innerHTML === "=") {
-            inp.value = inp.value.replace(/✖/g, '*').replace(/÷/, '/')
+        let inputText = inp.value
+        inputText = ''
+        if (btn.innerHTML === '=') {
             inp.value = eval(inp.value)
         }
         else {
-            inp.value += btn.innerHTML
+            if (btn.innerHTML === 'AC') {
+                inp.value = ''
+            }
+            else if (btn.innerHTML === 'DEL') {
+                inp.value = inp.value.slice(0, inp.value.length - 1)
+            }
+            else {
+                inp.value = inp.value.replace(/✖/g, '*').replace(/÷/, '/')
+                inp.value += btn.innerHTML
+            }
 
         }
 
-    })
-})
 
+    })
+
+})
 
 
 

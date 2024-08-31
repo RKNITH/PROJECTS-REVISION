@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>TEXT-EDITOR</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-container">
+            <div class="button-container">
+                <button id="bold">Bold</button>
+                <button id="italic">Italic</button>
+                <button id="underline">Underline</button>
+
+                <input type="color" id="textColor" title="Text Color" />
+
+                <select id="fontSize" title="Font Size">
+                    <option value="1">Small</option>
+                    <option value="3" selected>Normal</option>
+                    <option value="5">Large</option>
+                    <option value="7">Extra Large</option>
+                </select>
+
+                <select id="fontFamily" title="Font Family">
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="cursive">Cursive</option>
+                </select>
+
+                <select id="fontWeight" title="Font Weight">
+                    <option value="normal" selected>Normal</option>
+                    <option value="bold">Bold</option>
+                    <option value="bolder">Bolder</option>
+                    <option value="lighter">Lighter</option>
+                </select>
+            </div>
+            <div class="text-container">
+                <div id="text" contenteditable="true"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -56,62 +56,127 @@
 
 
 // **************************************************
+// const inp = document.getElementById('inp');
+// const select = document.getElementById('select');
+// const left = document.getElementById('left');
+// const reset = document.getElementById('reset');
+// const submit = document.getElementById('submit');
+
+// let level
+
+// let guessingNumber = Math.floor(Math.random() * 100) + 1
+// console.log(guessingNumber);
+
+
+// function setDifficulty() {
+//     select.addEventListener('change', () => {
+//         if (select.value === '2') {
+//             level = 5
+//         }
+//         else if (select.value === '1') {
+//             level = 5
+//         }
+
+//         left.innerHTML = level
+//     })
+
+// }
+// setDifficulty()
+
+// submit.addEventListener('click', () => {
+//     if (inp.value > guessingNumber) {
+//         alert('Too Large')
+//         level -= 1
+//         left.innerHTML = level
+//         inp.value = ''
+//     }
+//     else if (inp.value < guessingNumber) {
+//         alert('Too Small')
+//         level -= 1
+//         left.innerHTML = level
+//         inp.value = ''
+//     }
+//     else if (inp.value == guessingNumber) {
+//         alert('Got It')
+
+//     }
+//     if (level < 1) {
+//         submit.disabled = true;
+
+//     }
+
+// })
+
+// reset.addEventListener('click', () => {
+//     inp.value = '';
+//     num = Math.floor(Math.random() * 100) + 1; // New random number between 1 and 100
+//     setDifficulty(); // Reset difficulty level
+//     console.log(num);
+//     submit.disabled = false; // Enable the submit button
+// });
+
+
+// ***********************************************************
 const inp = document.getElementById('inp');
 const select = document.getElementById('select');
 const left = document.getElementById('left');
 const reset = document.getElementById('reset');
 const submit = document.getElementById('submit');
 
+const setDifficulty = () => {
+    select.addEventListener('change', () => {
+        if (select.value === '2') {
+            left.innerHTML = 5
+        }
+        else {
+            left.innerHTML = 10
+        }
+
+    })
+}
+setDifficulty()
 let level
 
 let guessingNumber = Math.floor(Math.random() * 100) + 1
 console.log(guessingNumber);
 
 
-function setDifficulty() {
-    select.addEventListener('change', () => {
-        if (select.value === '2') {
-            level = 5
-        }
-        else if (select.value === '1') {
-            level = 5
-        }
-
-        left.innerHTML = level
-    })
-
-}
-setDifficulty()
-
 submit.addEventListener('click', () => {
-    if (inp.value > guessingNumber) {
-        alert('Too Large')
-        level -= 1
-        left.innerHTML = level
-        inp.value = ''
-    }
-    else if (inp.value < guessingNumber) {
-        alert('Too Small')
-        level -= 1
-        left.innerHTML = level
-        inp.value = ''
-    }
-    else if (inp.value == guessingNumber) {
-        alert('Got It')
+    let guessedNumber = inp.value.trim()
+    level = left.innerHTML
 
+    if (level > 0) {
+        if (guessedNumber > guessingNumber) {
+            alert('Too Large')
+            level--
+            left.innerHTML = level
+            inp.value = ''
+        }
+        else if (guessedNumber < guessingNumber) {
+            alert('Too Low')
+            level--
+            left.innerHTML = level
+            inp.value = ''
+        }
+        else {
+            alert(' You Got it')
+        }
     }
     if (level < 1) {
-        submit.disabled = true;
-
+        alert('Gmae Over')
+        submit.disabled = true
     }
 
 })
 
 reset.addEventListener('click', () => {
-    inp.value = '';
-    num = Math.floor(Math.random() * 100) + 1; // New random number between 1 and 100
-    setDifficulty(); // Reset difficulty level
-    console.log(num);
-    submit.disabled = false; // Enable the submit button
-});
+    inp.value = ''
+    setDifficulty()
+    guessingNumber = Math.floor(Math.random() * 100) + 1
+    submit.disabled = false
+    console.log(guessingNumber);
+
+
+})
+
 

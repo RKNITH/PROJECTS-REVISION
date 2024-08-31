@@ -1,0 +1,113 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #09db13;
+}
+
+.button-container button:focus {
+    outline: none;
+    background-color: #388e3c;
+}
+
+.text-container {
+    width: 100%;
+}
+
+/* Textarea styling */
+.text-container div {
+    width: 100%;
+    height: 400px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: none;
+    box-shadow: inset 4px 2px 5px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.text-container textarea:focus {
+    outline: none;
+    background-color: #e8f0fe;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .text-container div {
+        height: 300px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .button-container button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .text-container div {
+        height: 250px;
+    }
+}
