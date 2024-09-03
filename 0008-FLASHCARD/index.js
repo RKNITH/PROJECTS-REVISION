@@ -212,29 +212,81 @@ const data = [
 
 // *******************************************************************
 
+// const question = document.getElementById('question')
+// const answer = document.getElementById('answer')
+// const next = document.getElementById('next')
+// const review = document.getElementById('review')
+// const answerContainer = document.getElementById('answer-container')
+
+
+// let currentIndex = 0
+
+// function showQuestion(index) {
+//     question.innerHTML = data[index].question
+//     answer.innerHTML = data[index].answer
+// }
+
+// next.addEventListener('click', () => {
+//     currentIndex = (currentIndex + 1) % data.length
+//     showQuestion(currentIndex)
+//     answerContainer.style.display = 'none'
+// })
+
+// review.addEventListener('click', () => {
+//     answerContainer.style.display = 'block'
+
+// })
+
+// showQuestion(currentIndex)
+
+
+
+
+
+
+
+
+
+
+
+// **************************************************************
+
+
 const question = document.getElementById('question')
 const answer = document.getElementById('answer')
 const next = document.getElementById('next')
 const review = document.getElementById('review')
 const answerContainer = document.getElementById('answer-container')
 
-
 let currentIndex = 0
 
-function showQuestion(index) {
-    question.innerHTML = data[index].question
-    answer.innerHTML = data[index].answer
+
+const showQuestion = (index) => {
+    let questionData = data[index].question
+    let answerData = data[index].answer
+
+    question.innerHTML = questionData
+    answer.innerHTML = answerData
+
+
+
 }
 
 next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % data.length
+    currentIndex = (currentIndex + 1) % (data.length)
     showQuestion(currentIndex)
+
     answerContainer.style.display = 'none'
 })
 
 review.addEventListener('click', () => {
     answerContainer.style.display = 'block'
-
 })
+
+
+
+
+
+
 
 showQuestion(currentIndex)

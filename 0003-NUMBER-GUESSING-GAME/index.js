@@ -117,66 +117,200 @@
 
 
 // ***********************************************************
+// const inp = document.getElementById('inp');
+// const select = document.getElementById('select');
+// const left = document.getElementById('left');
+// const reset = document.getElementById('reset');
+// const submit = document.getElementById('submit');
+
+// const setDifficulty = () => {
+//     select.addEventListener('change', () => {
+//         if (select.value === '2') {
+//             left.innerHTML = 5
+//         }
+//         else {
+//             left.innerHTML = 10
+//         }
+
+//     })
+// }
+// setDifficulty()
+// let level
+
+// let guessingNumber = Math.floor(Math.random() * 100) + 1
+// console.log(guessingNumber);
+
+
+// submit.addEventListener('click', () => {
+//     let guessedNumber = inp.value.trim()
+//     level = left.innerHTML
+
+//     if (level > 0) {
+//         if (guessedNumber > guessingNumber) {
+//             alert('Too Large')
+//             level--
+//             left.innerHTML = level
+//             inp.value = ''
+//         }
+//         else if (guessedNumber < guessingNumber) {
+//             alert('Too Low')
+//             level--
+//             left.innerHTML = level
+//             inp.value = ''
+//         }
+//         else {
+//             alert(' You Got it')
+//         }
+//     }
+//     if (level < 1) {
+//         alert('Gmae Over')
+//         submit.disabled = true
+//     }
+
+// })
+
+// reset.addEventListener('click', () => {
+//     inp.value = ''
+//     setDifficulty()
+//     guessingNumber = Math.floor(Math.random() * 100) + 1
+//     submit.disabled = false
+//     console.log(guessingNumber);
+
+
+// })
+
+
+
+
+
+// ***********************************************************
+// const inp = document.getElementById('inp');
+// const select = document.getElementById('select');
+// const left = document.getElementById('left');
+// const reset = document.getElementById('reset');
+// const submit = document.getElementById('submit');
+
+// function setDifficulty() {
+//     select.addEventListener('change', () => {
+//         if (select.value == '2') {
+//             left.innerHTML = 5
+//         }
+//         else {
+//             left.innerHTML = 10
+//         }
+//     })
+// }
+
+// setDifficulty()
+
+
+// let num = Math.floor(Math.random() * 100) + 1
+// console.log(num);
+
+// let level
+// submit.addEventListener('click', () => {
+//     let guess = inp.value
+//     level = left.innerHTML
+//     setDifficulty()
+
+//     if (level > 0) {
+//         if (inp.value > num) {
+//             alert('Too large')
+//             level--
+//             left.innerHTML = level
+//             inp.value = ''
+
+//         }
+//         else if (inp.value < num) {
+//             alert('Too small')
+//             level--
+//             left.innerHTML = level
+//             inp.value = ''
+//         }
+//         else {
+//             alert('Got it')
+//         }
+//     }
+//     if (level < 1) {
+//         alert('Gmae over, lose it')
+//         submit.disabled = true
+//     }
+
+
+// })
+
+// reset.addEventListener('click', () => {
+//     inp.value = ''
+//     submit.disabled = false
+//     select.value = 1
+//     left.innerHTML = 10
+//     num = Math.floor(Math.random() * 100) + 1
+//     console.log(num);
+
+// })
+
+
+// *************************************************************
+
 const inp = document.getElementById('inp');
 const select = document.getElementById('select');
 const left = document.getElementById('left');
 const reset = document.getElementById('reset');
 const submit = document.getElementById('submit');
 
+
+let num = Math.floor(Math.random() * 100) + 1
+console.log(num);
+
+let life
 const setDifficulty = () => {
     select.addEventListener('change', () => {
-        if (select.value === '2') {
+        if (select.value == 2) {
             left.innerHTML = 5
         }
         else {
             left.innerHTML = 10
         }
-
     })
 }
+
+
 setDifficulty()
-let level
-
-let guessingNumber = Math.floor(Math.random() * 100) + 1
-console.log(guessingNumber);
-
 
 submit.addEventListener('click', () => {
-    let guessedNumber = inp.value.trim()
-    level = left.innerHTML
+    life = left.innerHTML
+    if (inp.value.length == 0) {
+        alert('please guess number')
 
-    if (level > 0) {
-        if (guessedNumber > guessingNumber) {
-            alert('Too Large')
-            level--
-            left.innerHTML = level
-            inp.value = ''
-        }
-        else if (guessedNumber < guessingNumber) {
-            alert('Too Low')
-            level--
-            left.innerHTML = level
-            inp.value = ''
+    } else {
+        if (life > 0) {
+            if (inp.value > num) {
+                alert('Too Large')
+                life--
+                left.innerHTML = life
+            }
+            else if (inp.value < num) {
+                alert('Too Small')
+                life--
+                left.innerHTML = life
+            }
+            else {
+                alert('You Got It')
+                submit.disabled = true
+            }
         }
         else {
-            alert(' You Got it')
+            alert('You have no extra attempts to guess the number')
+            submit.disabled = true
         }
     }
-    if (level < 1) {
-        alert('Gmae Over')
-        submit.disabled = true
-    }
-
 })
 
 reset.addEventListener('click', () => {
-    inp.value = ''
-    setDifficulty()
-    guessingNumber = Math.floor(Math.random() * 100) + 1
     submit.disabled = false
-    console.log(guessingNumber);
-
+    select.value = 1
+    left.innerHTML = 10
+    inp.value = ''
+    num = Math.floor(Math.random() * 100) + 1
 
 })
-
-
