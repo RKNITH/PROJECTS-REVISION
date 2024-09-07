@@ -252,6 +252,74 @@
 
 // *************************************************************
 
+// const inp = document.getElementById('inp');
+// const select = document.getElementById('select');
+// const left = document.getElementById('left');
+// const reset = document.getElementById('reset');
+// const submit = document.getElementById('submit');
+
+
+// let num = Math.floor(Math.random() * 100) + 1
+// console.log(num);
+
+// let life
+// const setDifficulty = () => {
+//     select.addEventListener('change', () => {
+//         if (select.value == 2) {
+//             left.innerHTML = 5
+//         }
+//         else {
+//             left.innerHTML = 10
+//         }
+//     })
+// }
+
+
+// setDifficulty()
+
+// submit.addEventListener('click', () => {
+//     life = left.innerHTML
+//     if (inp.value.length == 0) {
+//         alert('please guess number')
+
+//     } else {
+//         if (life > 0) {
+//             if (inp.value > num) {
+//                 alert('Too Large')
+//                 life--
+//                 left.innerHTML = life
+//             }
+//             else if (inp.value < num) {
+//                 alert('Too Small')
+//                 life--
+//                 left.innerHTML = life
+//             }
+//             else {
+//                 alert('You Got It')
+//                 submit.disabled = true
+//             }
+//         }
+//         else {
+//             alert('You have no extra attempts to guess the number')
+//             submit.disabled = true
+//         }
+//     }
+// })
+
+// reset.addEventListener('click', () => {
+//     submit.disabled = false
+//     select.value = 1
+//     left.innerHTML = 10
+//     inp.value = ''
+//     num = Math.floor(Math.random() * 100) + 1
+
+// })
+
+
+
+// ************************************************************
+
+
 const inp = document.getElementById('inp');
 const select = document.getElementById('select');
 const left = document.getElementById('left');
@@ -263,54 +331,53 @@ let num = Math.floor(Math.random() * 100) + 1
 console.log(num);
 
 let life
+
 const setDifficulty = () => {
     select.addEventListener('change', () => {
-        if (select.value == 2) {
+        if (select.value === '2') {
             left.innerHTML = 5
         }
         else {
             left.innerHTML = 10
         }
+        life = left.innerHTML
     })
 }
-
-
 setDifficulty()
 
-submit.addEventListener('click', () => {
-    life = left.innerHTML
-    if (inp.value.length == 0) {
-        alert('please guess number')
 
-    } else {
-        if (life > 0) {
-            if (inp.value > num) {
-                alert('Too Large')
-                life--
-                left.innerHTML = life
-            }
-            else if (inp.value < num) {
-                alert('Too Small')
-                life--
-                left.innerHTML = life
-            }
-            else {
-                alert('You Got It')
-                submit.disabled = true
-            }
+submit.addEventListener('click', () => {
+    guess = inp.value
+
+    if (life > 0) {
+        if (guess > num) {
+            alert('Too Large')
+            life--
+            left.innerHTML = life
+            inp.focus()
+        }
+        else if (guess < num) {
+            alert('Too small')
+            life--
+            left.innerHTML = life
+            inp.focus()
+
         }
         else {
-            alert('You have no extra attempts to guess the number')
-            submit.disabled = true
+            alert('You Got it')
         }
+    }
+    else {
+        alert('You Lose it')
+        submit.disabled = true
     }
 })
 
 reset.addEventListener('click', () => {
     submit.disabled = false
-    select.value = 1
-    left.innerHTML = 10
-    inp.value = ''
     num = Math.floor(Math.random() * 100) + 1
+    setDifficulty()
+    console.log((num));
+
 
 })

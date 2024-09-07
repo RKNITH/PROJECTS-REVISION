@@ -309,6 +309,76 @@
 // ************************************************************
 
 
+// const inp = document.getElementById('inp')
+// const range = document.getElementById('range')
+// const upper = document.getElementById('upper')
+// const lower = document.getElementById('lower')
+// const num = document.getElementById('num')
+// const symbol = document.getElementById('symbol')
+// const value = document.getElementById('value')
+// const copy = document.getElementById('copy')
+// const generate = document.getElementById('generate')
+
+// const upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+// const lowerLetter = 'abcdefghijklmnopqrstuvwxyz'
+// const number = '1234567890'
+// const sym = '@#$%&'
+
+// let passwordLenght = 0
+
+// range.addEventListener('change', () => {
+//     value.innerHTML = range.value
+//     passwordLenght = value.innerHTML
+// })
+
+// const shuffleString = (str) => {
+//     let arr = str.split('')
+//     for (let i = arr.length - 1; i > 0; i--) {
+//         let j = Math.floor(Math.random() * arr.length) * (i + 1)
+
+//         let temp = arr[i]
+//         arr[i] = arr[j]
+//         arr[j] = temp
+//     }
+//     return arr.join('')
+// }
+
+// console.log(shuffleString('ravi'));
+
+
+// const generatePassword = () => {
+//     let password = ''
+
+//     if (upper.checked) password += upperLetter
+//     if (lower.checked) password += lowerLetter
+//     if (num.checked) password += number
+//     if (symbol.checked) password += sym
+
+//     password = shuffleString(password)
+
+//     password = password.slice(0, passwordLenght)
+
+//     return password
+
+
+// }
+
+// generate.addEventListener('click', () => {
+//     if (generatePassword() == '') {
+//         alert('please select any of them')
+
+//     }
+//     else {
+//         inp.value = generatePassword()
+//     }
+//     alert('hello')
+
+// })
+
+
+
+
+// ***************************************************************
 const inp = document.getElementById('inp')
 const range = document.getElementById('range')
 const upper = document.getElementById('upper')
@@ -328,27 +398,25 @@ let passwordLenght = 0
 
 range.addEventListener('change', () => {
     value.innerHTML = range.value
-    passwordLenght = value.innerHTML
+    passwordLenght = range.value
 })
 
 const shuffleString = (str) => {
     let arr = str.split('')
-    for (let i = arr.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * arr.length) * (i + 1)
-
-        let temp = arr[i]
+    for (let i = str.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        temp = arr[i]
         arr[i] = arr[j]
         arr[j] = temp
+
     }
     return arr.join('')
 }
-
 console.log(shuffleString('ravi'));
 
 
 const generatePassword = () => {
     let password = ''
-
     if (upper.checked) password += upperLetter
     if (lower.checked) password += lowerLetter
     if (num.checked) password += number
@@ -360,17 +428,22 @@ const generatePassword = () => {
 
     return password
 
-
 }
 
 generate.addEventListener('click', () => {
-    if (generatePassword() == '') {
+    if (generatePassword() === '') {
         alert('please select any of them')
-
+        return
     }
-    else {
-        inp.value = generatePassword()
-    }
-    alert('hello')
+    inp.value = generatePassword()
+})
 
+copy.addEventListener('click', () => {
+    if (inp.value === '') {
+        alert('first generate password')
+    } else {
+        window.navigator.clipboard.writeText(inp.value)
+        inp.select()
+        alert('password copied')
+    }
 })
