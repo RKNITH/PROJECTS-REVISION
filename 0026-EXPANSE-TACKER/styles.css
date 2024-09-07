@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.expense-form,
+.expense-summary {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 1rem;
+    width: 90%;
+    max-width: 600px;
+}
+
+.expense-form h2,
+.expense-summary h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead th {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem;
+}
+
+tbody td,
+tfoot td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+tfoot td.total-amount {
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+
+    .expense-form,
+    .expense-summary {
+        width: 100%;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    /* Hide table headers for mobile */
+    thead {
+        display: none;
+    }
+
+    /* Adjust table rows for mobile */
+    tr {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Adjust table cells for mobile */
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        text-align: left;
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: capitalize;
+        flex: 1;
+    }
+
+    .total-amount {
+        text-align: right;
+        font-size: 1.2rem;
+    }
+}
