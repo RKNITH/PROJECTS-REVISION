@@ -284,68 +284,132 @@
 // *********************************************************
 
 
+// const watch = document.getElementById('watch');
+// const reset = document.getElementById('reset');
+// const start = document.getElementById('start');
+// // const resume = document.getElementById('resume');
+// const pause = document.getElementById('pause');
+
+// let seconds = 0
+// let minutes = 0
+// let hours = 0
+// let timerId = null
+
+// const formateTime = (time) => {
+//     return time < 10 ? `0${time}` : `${time}`
+// }
+
+// const displayTime = () => {
+//     watch.innerHTML = `${formateTime(hours)} : ${formateTime(minutes)} : ${formateTime(seconds)}`
+// }
+
+
+
+// const increaseTime = () => {
+//     seconds++
+//     if (seconds > 59) {
+//         minutes++
+//         seconds = 0
+//         if (minutes > 59) {
+//             minutes = 0
+//             hours++
+//         }
+//     }
+//     displayTime()
+// }
+
+
+// start.addEventListener('click', () => {
+//     if (!timerId) {
+//         timerId = setInterval(increaseTime, 1000)
+//     }
+
+// })
+
+// pause.addEventListener('click', () => {
+//     if (timerId) {
+//         clearInterval(timerId)
+//         timerId = null
+//     }
+// })
+
+// reset.addEventListener('click', () => {
+//     clearInterval(timerId)
+//     timerId = null
+//     seconds = 0
+//     minutes = 0
+//     hours = 0
+//     displayTime()
+// })
+
+
+
+
+
+
+
+// displayTime()
+
+
+// ************************************************************
+
+
 const watch = document.getElementById('watch');
 const reset = document.getElementById('reset');
 const start = document.getElementById('start');
-// const resume = document.getElementById('resume');
 const pause = document.getElementById('pause');
 
-let seconds = 0
-let minutes = 0
-let hours = 0
-let timerId = null
+let sec = 0;
+let min = 0;
+let hour = 0;
 
-const formateTime = (time) => {
+let timerid = null
+
+const formatTime = (time) => {
     return time < 10 ? `0${time}` : `${time}`
 }
 
 const displayTime = () => {
-    watch.innerHTML = `${formateTime(hours)} : ${formateTime(minutes)} : ${formateTime(seconds)}`
+    watch.innerHTML = `${formatTime(hour)} : ${formatTime(min)} : ${formatTime(sec)}`
 }
 
-
-
 const increaseTime = () => {
-    seconds++
-    if (seconds > 59) {
-        minutes++
-        seconds = 0
-        if (minutes > 59) {
-            minutes = 0
-            hours++
+    sec++
+    if (sec > 59) {
+        min++
+        sec = 0
+        if (min > 59) {
+            hour++
+            min = 0
         }
     }
     displayTime()
+
 }
 
-
 start.addEventListener('click', () => {
-    if (!timerId) {
-        timerId = setInterval(increaseTime, 1000)
+    if (!timerid) {
+        timerid = setInterval(increaseTime, 1000)
     }
 
 })
 
 pause.addEventListener('click', () => {
-    if (timerId) {
-        clearInterval(timerId)
-        timerId = null
+    if (timerid) {
+        clearInterval(timerid)
+        timerid = null
     }
 })
 
 reset.addEventListener('click', () => {
-    clearInterval(timerId)
-    timerId = null
-    seconds = 0
-    minutes = 0
-    hours = 0
+    clearInterval(timerid)
+    sec = 0
+    min = 0
+    hour = 0
     displayTime()
+    timerid = null
+
 })
-
-
-
-
-
 
 
 displayTime()

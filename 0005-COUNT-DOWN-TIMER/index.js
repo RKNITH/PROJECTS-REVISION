@@ -267,80 +267,153 @@
 
 
 
-// Elements for displaying the time and controlling the timer
-const eventTime = document.getElementById('event-time');
-const hour = document.getElementById('hour');
-const min = document.getElementById('min');
-const sec = document.getElementById('sec');
-const start = document.getElementById('start');
-const pause = document.getElementById('pause');
-const restart = document.getElementById('restart');
+// // Elements for displaying the time and controlling the timer
+// const eventTime = document.getElementById('event-time');
+// const hour = document.getElementById('hour');
+// const min = document.getElementById('min');
+// const sec = document.getElementById('sec');
+// const start = document.getElementById('start');
+// const pause = document.getElementById('pause');
+// const restart = document.getElementById('restart');
 
-let timerId = null;  // Holds the ID of the interval timer
-let timerValue = 0;  // Holds the remaining time in seconds
+// let timerId = null;  // Holds the ID of the interval timer
+// let timerValue = 0;  // Holds the remaining time in seconds
 
-// Formats the time to ensure two digits (e.g., "09" instead of "9")
-const formatTime = (time) => {
-    return time < 10 ? `0${time}` : `${time}`;
-};
+// // Formats the time to ensure two digits (e.g., "09" instead of "9")
+// const formatTime = (time) => {
+//     return time < 10 ? `0${time}` : `${time}`;
+// };
 
-// Updates the display with the current hours, minutes, and seconds
+// // Updates the display with the current hours, minutes, and seconds
+// const displayTime = (time) => {
+//     let hrs = Math.floor(time / 60 / 60);  // Calculate hours
+//     let mins = Math.floor((time / 60) % 60);  // Calculate minutes
+//     let secs = Math.floor(time % 60);  // Calculate seconds
+
+//     hour.innerHTML = formatTime(hrs);
+//     min.innerHTML = formatTime(mins);
+//     sec.innerHTML = formatTime(secs);
+// };
+
+// // Start button click event
+// start.addEventListener('click', () => {
+//     const inputTime = parseInt(eventTime.value.trim());  // Get the time from the input
+
+//     // Check if the input is a valid number
+//     if (isNaN(inputTime) || inputTime < 0) {
+//         alert('Please add valid time');
+//         return;
+//     }
+
+//     // Only start the timer if it's not already running
+//     if (!timerId) {
+//         // Set timerValue to the input time if it's the first start
+//         if (timerValue === 0) {
+//             timerValue = inputTime;
+//         }
+
+//         displayTime(timerValue);  // Show the initial time
+
+//         // Start the timer
+//         timerId = setInterval(() => {
+//             timerValue--;  // Decrement the timer value
+//             displayTime(timerValue);  // Update the display
+
+//             if (timerValue <= 0) {  // If the timer reaches zero
+//                 alert('TIMES UP');
+//                 clearInterval(timerId);  // Stop the timer
+//                 timerId = null;
+//             }
+//         }, 1000);  // Run this every second
+//     }
+// });
+
+// // Pause button click event
+// pause.addEventListener('click', () => {
+//     if (timerId) {
+//         clearInterval(timerId);  // Stop the timer
+//         timerId = null;
+//     }
+// });
+
+// // Restart button click event
+// restart.addEventListener('click', () => {
+//     clearInterval(timerId);  // Stop the timer
+//     timerId = null;
+//     timerValue = 0;  // Reset the timer value
+//     displayTime(0);  // Reset the display
+//     eventTime.value = '';  // Clear the input
+// });
+
+
+// **************************************************************
+
+
+
+const eventTime = document.getElementById('event-time')
+const hour = document.getElementById('hour')
+const min = document.getElementById('min')
+const sec = document.getElementById('sec')
+const start = document.getElementById('start')
+const pause = document.getElementById('pause')
+const restart = document.getElementById('restart')
+
+let timerId = null
+let inputTime = 0
+
+const formateTime = (time) => {
+    return time < 10 ? `0${time}` : `${time}`
+}
+
 const displayTime = (time) => {
-    let hrs = Math.floor(time / 60 / 60);  // Calculate hours
-    let mins = Math.floor((time / 60) % 60);  // Calculate minutes
-    let secs = Math.floor(time % 60);  // Calculate seconds
+    let hours = Math.floor(time / 60 / 60)
+    let minutes = Math.floor(time / 60)
+    let seconds = Math.floor(time % 60)
 
-    hour.innerHTML = formatTime(hrs);
-    min.innerHTML = formatTime(mins);
-    sec.innerHTML = formatTime(secs);
-};
+    hour.innerHTML = formateTime(hours)
+    min.innerHTML = formateTime(minutes)
+    sec.innerHTML = formateTime(seconds)
+}
 
-// Start button click event
 start.addEventListener('click', () => {
-    const inputTime = parseInt(eventTime.value.trim());  // Get the time from the input
-
-    // Check if the input is a valid number
-    if (isNaN(inputTime) || inputTime < 0) {
-        alert('Please add valid time');
-        return;
+    const timerValue = eventTime.value.trim()
+    if (timerValue <= 0) {
+        alert('please enter a valid time')
     }
 
-    // Only start the timer if it's not already running
     if (!timerId) {
-        // Set timerValue to the input time if it's the first start
-        if (timerValue === 0) {
-            timerValue = inputTime;
+        if (inputTime === 0) {
+            inputTime = timerValue
         }
-
-        displayTime(timerValue);  // Show the initial time
-
-        // Start the timer
+        displayTime(inputTime)
         timerId = setInterval(() => {
-            timerValue--;  // Decrement the timer value
-            displayTime(timerValue);  // Update the display
+            inputTime--
+            if (inputTime >= 0) {
+                displayTime(inputTime)
 
-            if (timerValue <= 0) {  // If the timer reaches zero
-                alert('TIMES UP');
-                clearInterval(timerId);  // Stop the timer
-                timerId = null;
             }
-        }, 1000);  // Run this every second
-    }
-});
+            else {
+                alert('TIMES UP')
+                clearInterval(timerId)
+                timerId = null
+            }
 
-// Pause button click event
+        }, 1000)
+
+    }
+})
+
 pause.addEventListener('click', () => {
     if (timerId) {
-        clearInterval(timerId);  // Stop the timer
-        timerId = null;
+        clearInterval(timerId)
+        timerId = null
     }
-});
+})
 
-// Restart button click event
 restart.addEventListener('click', () => {
-    clearInterval(timerId);  // Stop the timer
-    timerId = null;
-    timerValue = 0;  // Reset the timer value
-    displayTime(0);  // Reset the display
-    eventTime.value = '';  // Clear the input
-});
+    clearInterval(timerId)
+    timerId = null
+    inputTime = 0
+    displayTime(0)
+    eventTime.value = ''
+})
