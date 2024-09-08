@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Product Store</h1>
+        <input type="text" id="search" placeholder="Search products..." />
+    </header>
+
+    <main>
+        <section class="filters">
+            <h2>Filter Products</h2>
+            <label for="category-filter">Category:</label>
+            <select id="category-filter">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="furniture">Furniture</option>
+            </select>
+
+            <label for="price-sort">Sort by Price:</label>
+            <select id="price-sort">
+                <option value="none">None</option>
+                <option value="asc">Low to High</option>
+                <option value="desc">High to Low</option>
+            </select>
+        </section>
+
+        <section class="product-list" id="product-list">
+            <!-- Products will be displayed here -->
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
