@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #f0f0f0;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: #6200ea;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+header input {
+    padding: 10px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.task-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input input,
+.task-input select {
+    padding: 10px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(33% - 10px);
+}
+
+.task-input button {
+    padding: 10px 20px;
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.task-input button:hover {
+    background-color: #5d00e0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+li .task-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li .task-details .task-meta {
+    color: #777;
+}
+
+li .delete-btn {
+    background-color: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+li .delete-btn:hover {
+    background-color: #ff3b3b;
+}
+
+@media (max-width: 600px) {
+    header input {
+        width: 90%;
+    }
+
+    .task-input {
+        flex-direction: column;
+    }
+
+    .task-input input,
+    .task-input select {
+        width: 100%;
+    }
+
+    .task-input button {
+        width: 100%;
+    }
+}

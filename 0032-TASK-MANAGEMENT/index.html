@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Task Management System</h1>
+        <input type="text" id="search" placeholder="Search tasks..." onkeyup="searchTask()">
+    </header>
+
+    <main>
+        <div class="task-input">
+            <input type="text" id="task" placeholder="Task title..." required>
+            <input type="date" id="dueDate" required>
+            <select id="priority">
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+            </select>
+            <button id="addTask" onclick="addTask()">Add Task</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
