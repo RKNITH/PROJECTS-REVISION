@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>My Blog</h1>
+            <input type="text" id="searchInput" onkeyup="searchBlog()" placeholder="Search for blog posts...">
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container">
+        <section id="blogs">
+            <article class="blog-post">
+                <h2 class="blog-title">The Importance of Learning JavaScript</h2>
+                <p class="blog-date">Posted on: September 10, 2024</p>
+                <p class="blog-content">JavaScript is one of the most popular programming languages in the world. It's
+                    essential for creating interactive websites and is supported by all modern browsers...</p>
+            </article>
+            <article class="blog-post">
+                <h2 class="blog-title">Responsive Web Design Best Practices</h2>
+                <p class="blog-date">Posted on: August 15, 2024</p>
+                <p class="blog-content">Responsive web design ensures that your website works well on all devices,
+                    including smartphones, tablets, and desktops. Learn the best practices to implement it
+                    effectively...</p>
+            </article>
+            <article class="blog-post">
+                <h2 class="blog-title">CSS Grid vs Flexbox: When to Use Which</h2>
+                <p class="blog-date">Posted on: July 28, 2024</p>
+                <p class="blog-content">CSS Grid and Flexbox are two powerful layout systems in CSS. Understanding when
+                    to use which will help you build efficient and scalable layouts for your web projects...</p>
+            </article>
+            <article class="blog-post">
+                <h2 class="blog-title">How to Optimize Website Performance</h2>
+                <p class="blog-date">Posted on: June 30, 2024</p>
+                <p class="blog-content">Website performance optimization is key to delivering a fast and seamless user
+                    experience. Learn how to improve loading times, reduce server requests, and optimize assets...</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="index.js"></script>
+
+</body>
+
+</html>
