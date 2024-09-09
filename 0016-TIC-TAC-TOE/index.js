@@ -539,6 +539,112 @@
 // ***********************************************************************
 
 
+// const games = document.querySelectorAll('.game');
+// const restart = document.getElementById('restart');
+// const start = document.getElementById('start');
+// const firstPlayer = document.getElementById('first');
+// const secondPlayer = document.getElementById('second');
+// const firstPlayerName = document.getElementById('firstPlayerName');
+// const secondPlayerName = document.getElementById('secondPlayerName');
+// const firstPlayerChoice = document.getElementById('firstPlayerChoice');
+// const result = document.querySelector('.result-container'); // Corrected to use querySelector
+
+// const capitalizeFirstLetter = (string) => `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
+
+// let playerTurn = 'first';
+// let firstPlayerChoices = '';
+// let secondPlayerChoices = '';
+// let gameActive = true;
+
+// const winningCombinations = [
+//     [0, 1, 2], // First row
+//     [3, 4, 5], // Second row
+//     [6, 7, 8], // Third row
+//     [0, 3, 6], // First column
+//     [1, 4, 7], // Second column
+//     [2, 5, 8], // Third column
+//     [0, 4, 8], // Diagonal from top-left to bottom-right
+//     [2, 4, 6]  // Diagonal from top-right to bottom-left
+// ];
+
+
+// const checkGameStatus = () => {
+
+//     let board = Array.from(games).map(game => game.innerHTML)
+//     for (combinations of winningCombinations) {
+//         const [a, b, c] = combinations
+
+//         if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+//             return board[a] === firstPlayerChoices ? 'first' : 'second'
+//         }
+
+//     }
+//     if (board.every(cell => cell != '')) {
+//         return 'Draw'
+//     }
+//     return null
+// }
+
+
+// start.addEventListener('click', () => {
+//     firstPlayerChoices = firstPlayerChoice.value.trim().toUpperCase()
+//     secondPlayerChoices = firstPlayerChoices === 'X' ? 'O' : 'X'
+
+//     if (firstPlayerChoices === '' || firstPlayerName === '' || secondPlayerName === '') {
+//         alert('please add name and choice of player')
+//         return
+//     }
+
+//     firstPlayer.innerHTML = `${capitalizeFirstLetter(firstPlayerName.value.trim())} : ${firstPlayerChoices}`
+//     secondPlayer.innerHTML = `${capitalizeFirstLetter(secondPlayerName.value.trim())} : ${secondPlayerChoices}`
+
+
+//     gameActive = true
+//     playerTurn = 'first'
+//     games.forEach(game => {
+//         game.addEventListener('click', () => {
+//             if (game.innerHTML === '' && gameActive) {
+//                 if (playerTurn === 'first') {
+//                     game.innerHTML = firstPlayerChoices
+//                     playerTurn = 'second'
+//                 }
+//                 else {
+//                     game.innerHTML = secondPlayerChoices
+//                     playerTurn = 'first'
+//                 }
+//                 let status = checkGameStatus();
+//                 if (status === 'first') {
+//                     result.innerHTML = `${capitalizeFirstLetter(firstPlayerName.value.trim())} wins!`;
+//                     gameActive = false;
+//                 } else if (status === 'second') {
+//                     result.innerHTML = `${capitalizeFirstLetter(secondPlayerName.value.trim())} wins!`;
+//                     gameActive = false;
+//                 } else if (status === 'Draw') {
+//                     result.innerHTML = 'It\'s a draw!';
+//                     gameActive = false;
+//                 }
+
+//             }
+//         })
+//     })
+
+// })
+
+
+// restart.addEventListener('click', () => {
+//     games.forEach(game => game.innerHTML = ''); // Clear the game board
+//     firstPlayer.innerHTML = '';
+//     secondPlayer.innerHTML = '';
+//     firstPlayerName.value = '';
+//     secondPlayerName.value = '';
+//     firstPlayerChoice.value = '';
+//     result.innerHTML = ''; // Clear the result message
+//     gameActive = true; // Reset the game state
+// });
+
+
+// *****************************************************************
+
 const games = document.querySelectorAll('.game');
 const restart = document.getElementById('restart');
 const start = document.getElementById('start');
@@ -566,8 +672,6 @@ const winningCombinations = [
     [0, 4, 8], // Diagonal from top-left to bottom-right
     [2, 4, 6]  // Diagonal from top-right to bottom-left
 ];
-
-
 const checkGameStatus = () => {
 
     let board = Array.from(games).map(game => game.innerHTML)
@@ -585,32 +689,23 @@ const checkGameStatus = () => {
     return null
 }
 
-
 start.addEventListener('click', () => {
     firstPlayerChoices = firstPlayerChoice.value.trim().toUpperCase()
-    secondPlayerChoices = firstPlayerChoices === 'X' ? 'O' : 'X'
-
-    if (firstPlayerChoices === '' || firstPlayerName === '' || secondPlayerName === '') {
-        alert('please add name and choice of player')
-        return
-    }
+    secondPlayerChoices = firstPlayerChoices === 'X' ? 'O' : "X"
 
     firstPlayer.innerHTML = `${capitalizeFirstLetter(firstPlayerName.value.trim())} : ${firstPlayerChoices}`
     secondPlayer.innerHTML = `${capitalizeFirstLetter(secondPlayerName.value.trim())} : ${secondPlayerChoices}`
-
-
-    gameActive = true
-    playerTurn = 'first'
+    gameActive = true;
+    playerTurn = 'first';
     games.forEach(game => {
         game.addEventListener('click', () => {
-            if (game.innerHTML === '' && gameActive) {
+            if (gameActive && game.innerHTML === '') {
                 if (playerTurn === 'first') {
-                    game.innerHTML = firstPlayerChoices
                     playerTurn = 'second'
-                }
-                else {
-                    game.innerHTML = secondPlayerChoices
+                    game.innerHTML = firstPlayerChoices
+                } else {
                     playerTurn = 'first'
+                    game.innerHTML = secondPlayerChoices
                 }
                 let status = checkGameStatus();
                 if (status === 'first') {
@@ -623,13 +718,10 @@ start.addEventListener('click', () => {
                     result.innerHTML = 'It\'s a draw!';
                     gameActive = false;
                 }
-
             }
         })
     })
-
 })
-
 
 restart.addEventListener('click', () => {
     games.forEach(game => game.innerHTML = ''); // Clear the game board
