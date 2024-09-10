@@ -1,69 +1,52 @@
 
+const newsList = document.getElementById('news')
+const date = document.getElementById('date')
+const copyright = document.getElementById('copyright-year')
 
-// source : https://github.com/plenaryapp/awesome-rss-feeds
+const currentDate = new Date()
+date.innerHTML = currentDate.toDateString()
+copyright.innerHTML = currentDate.getFullYear()
 
+const feeds = [
+    { url: 'http://feeds.bbci.co.uk/news/world/asia/india/rss.xml', name: "BBC News - India" },
+    { url: 'https://www.theguardian.com/world/india/rss', name: "India - The Guardian" },
+    { url: 'https://timesofindia.indiatimes.com/rssfeedstopstories.cms', name: "Times of India" },
+    { url: 'https://www.thehindu.com/feeder/default.rss', name: "The Hindu" },
+    { url: 'http://indianexpress.com/print/front-page/feed/', name: "The Indian Express" },
+    { url: 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN%3Aen&oc=11', name: "Top Stories - Google News" }
+];
 
-const textarea = document.querySelector('#feed-textarea > ul');
-
-const date = new Date();
-document.querySelector('#date').innerHTML = date.toDateString();
-
-var bbc = 'http://feeds.bbci.co.uk/news/world/asia/india/rss.xml'
-var theguardian = 'https://www.theguardian.com/world/india/rss'
-var timesofindia = 'https://timesofindia.indiatimes.com/rssfeedstopstories.cms'
-var thehindu = 'https://www.thehindu.com/feeder/default.rss'
-var indianexpress = 'http://indianexpress.com/print/front-page/feed/'
-var google = 'https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN%3Aen&oc=11'
-
-
-getFeed(thehindu, "The Hindu");
-getFeed(bbc, "BBC News - India");
-getFeed(indianexpress, "The Indian Express");
-getFeed(theguardian, "India - The Guardian");
-getFeed(timesofindia, "Times of India");
-getFeed(google, "Top Stories - Google News");
-
-function getFeed(url, name) {
-
-    // if (url.includes(`${bbc}`)) {
-    //     var head = "BBC News - India";
-    //     console.log(head);
-    // }
-
-
-    feednami.load(url, function (result) {
+function loadNews(newsUrl, newsName) {
+    feednami.load(newsUrl, function (result) {
         if (result.error) {
-            console.log(result.error)
+            console.log(`Error loading ${newsName}:`, result.error.message); // Log the error message
+            let errorMessage = document.createElement('p');
+            errorMessage.innerHTML = `Unable to load ${newsName} at the moment. Please try again later.`;
+            newsList.appendChild(errorMessage);  // Show an error message to the user
+        } else {
+            let newsHeader = document.createElement('h5');
+            newsHeader.innerHTML = `
+            <hr>
+            ${newsName}
+            <hr>
+            `;
+            newsList.appendChild(newsHeader);
+
+            let newsEntries = result.feed.entries;
+            newsEntries.forEach(entry => {
+                let newsItem = document.createElement('li');
+                let newsSummary = document.createElement('p');
+
+                newsItem.innerHTML = `<h4><a href="${entry.link}" target="_blank">${entry.title}</a></h4>`;
+                newsSummary.innerHTML = entry.summary;
+
+                newsList.appendChild(newsItem);
+                newsList.appendChild(newsSummary);
+            });
         }
-        else {
-            let h5 = document.createElement('h5');
-            h5.innerHTML = `<hr> ${name} <hr>`;
-            textarea.appendChild(h5);
-            // console.log(name);
-
-            var entries = result.feed.entries
-            for (var i = 0; i < entries.length; i++) {
-                var entry = entries[i]
-
-                // console.log(entry.title)
-                // console.log(entry.summary)
-
-                let li = document.createElement('li');
-                let para = document.createElement('p');
-
-
-                //add HTML content to list items
-                li.innerHTML = `<h4><a href="${entry.link}">${entry.title}</a></h4>`;
-                para.innerHTML = entry.summary;
-
-
-                //append HTML content to list 
-                textarea.appendChild(li);
-                textarea.appendChild(para);
-
-            }
-        }
-    })
+    });
 }
 
-
+feeds.forEach(feed => {
+    loadNews(feed.url, feed.name);
+});
