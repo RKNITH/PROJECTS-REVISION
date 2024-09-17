@@ -320,17 +320,83 @@
 // ************************************************************
 
 
+// const inp = document.getElementById('inp');
+// const select = document.getElementById('select');
+// const left = document.getElementById('left');
+// const reset = document.getElementById('reset');
+// const submit = document.getElementById('submit');
+
+
+// let num = Math.floor(Math.random() * 100) + 1
+// console.log(num);
+
+// let life
+
+// const setDifficulty = () => {
+//     select.addEventListener('change', () => {
+//         if (select.value === '2') {
+//             left.innerHTML = 5
+//         }
+//         else {
+//             left.innerHTML = 10
+//         }
+//         life = left.innerHTML
+//     })
+// }
+// setDifficulty()
+
+
+// submit.addEventListener('click', () => {
+//     guess = inp.value
+
+//     if (life > 0) {
+//         if (guess > num) {
+//             alert('Too Large')
+//             life--
+//             left.innerHTML = life
+//             inp.focus()
+//         }
+//         else if (guess < num) {
+//             alert('Too small')
+//             life--
+//             left.innerHTML = life
+//             inp.focus()
+
+//         }
+//         else {
+//             alert('You Got it')
+//         }
+//     }
+//     else {
+//         alert('You Lose it')
+//         submit.disabled = true
+//     }
+// })
+
+// reset.addEventListener('click', () => {
+//     submit.disabled = false
+//     num = Math.floor(Math.random() * 100) + 1
+//     setDifficulty()
+//     console.log((num));
+
+
+// })
+
+
+// **************************************************************************************************
+
+
+
 const inp = document.getElementById('inp');
 const select = document.getElementById('select');
 const left = document.getElementById('left');
 const reset = document.getElementById('reset');
 const submit = document.getElementById('submit');
 
-
+let life
 let num = Math.floor(Math.random() * 100) + 1
 console.log(num);
 
-let life
 
 const setDifficulty = () => {
     select.addEventListener('change', () => {
@@ -343,41 +409,40 @@ const setDifficulty = () => {
         life = left.innerHTML
     })
 }
+
 setDifficulty()
 
 
 submit.addEventListener('click', () => {
     guess = inp.value
-
     if (life > 0) {
         if (guess > num) {
-            alert('Too Large')
+            alert('too large')
             life--
             left.innerHTML = life
             inp.focus()
         }
         else if (guess < num) {
-            alert('Too small')
+            alert('too small')
             life--
             left.innerHTML = life
             inp.focus()
-
         }
         else {
-            alert('You Got it')
+            alert('you got it')
+            submit.disabled = true
         }
     }
     else {
-        alert('You Lose it')
+        alert('you have no attempts left, game over')
         submit.disabled = true
     }
 })
 
-reset.addEventListener('click', () => {
-    submit.disabled = false
-    num = Math.floor(Math.random() * 100) + 1
-    setDifficulty()
-    console.log((num));
 
+reset.addEventListener('click', () => {
+    inp.value = ''
+    submit.disabled = false
+    setDifficulty()
 
 })
