@@ -613,6 +613,108 @@
 // **********************************************************************************************
 
 
+// const header = document.getElementById('header')
+// const min = document.getElementById('min')
+// const sec = document.getElementById('sec')
+// const start = document.getElementById('start')
+// const restart = document.getElementById('restart')
+// const pause = document.getElementById('pause')
+// const round = document.getElementById('round')
+
+// const WORKING_TIME = 6
+// const BREAKING_TIME = 5
+
+// let workingTime = WORKING_TIME
+// let breakTime = BREAKING_TIME
+
+// let intervalId = null
+// let isWorking = true
+// let rounds = 0
+
+
+// const formateTime = (time) => {
+//     return time < 10 ? `0${time}` : `${time}`
+// }
+
+// const displayTime = (time) => {
+//     let minutes = Math.floor(time / 60)
+//     let seconds = Math.floor(time % 60)
+
+//     min.innerHTML = formateTime(minutes)
+//     sec.innerHTML = formateTime(seconds)
+
+// }
+
+// displayTime(workingTime)
+
+
+// const startTime = () => {
+//     if (!intervalId) {
+//         intervalId = setInterval(() => {
+//             if (isWorking) {
+//                 if (workingTime >= 0) {
+//                     header.innerHTML = 'Work'
+//                     displayTime(workingTime)
+//                     workingTime--
+//                 }
+//                 else {
+//                     workingTime = WORKING_TIME
+//                     header.innerHTML = 'Break'
+//                     isWorking = false
+
+//                 }
+//             }
+//             else {
+//                 if (breakTime >= 0) {
+//                     header.innerHTML = 'Break'
+//                     displayTime(breakTime)
+//                     breakTime--
+//                 }
+//                 else {
+//                     breakTime = BREAKING_TIME
+//                     header.innerHTML = 'Work'
+//                     isWorking = true
+//                     rounds++
+//                     round.innerHTML = `Yopu have completed ${rounds} rounds`
+//                 }
+//             }
+
+//         }, 1000)
+//     }
+
+
+// }
+
+// const pauseTimer = () => {
+//     if (intervalId) {
+//         clearInterval(intervalId)
+//         intervalId = null
+
+//     }
+
+// }
+
+// const restartTimer = () => {
+//     clearInterval(intervalId)
+//     workingTime = WORKING_TIME
+//     breakTime = BREAKING_TIME
+//     displayTime(0)
+//     intervalId = null
+//     header.innerHTML = 'POMODORO'
+
+
+// }
+
+
+// start.addEventListener('click', startTime)
+// restart.addEventListener('click', restart)
+// pause.addEventListener('click', pauseTimer)
+
+
+
+
+// ****************************************************************************************************
+
 const header = document.getElementById('header')
 const min = document.getElementById('min')
 const sec = document.getElementById('sec')
@@ -633,7 +735,7 @@ let rounds = 0
 
 
 const formateTime = (time) => {
-    return time < 10 ? `0${time}` : `${time}`
+    return time < 10 ? `0${time}` : $`{time}`
 }
 
 const displayTime = (time) => {
@@ -645,43 +747,44 @@ const displayTime = (time) => {
 
 }
 
-displayTime(workingTime)
-
 
 const startTime = () => {
     if (!intervalId) {
         intervalId = setInterval(() => {
             if (isWorking) {
-                if (workingTime >= 0) {
-                    header.innerHTML = 'Work'
-                    displayTime(workingTime)
+                if (workingTime > 0) {
                     workingTime--
+                    header.innerHTML = 'WORK'
+                    displayTime(workingTime)
                 }
                 else {
-                    workingTime = WORKING_TIME
                     header.innerHTML = 'Break'
-                    isWorking = false
-
+                    workingTime = WORKING_TIME
+                    isWorking = !isWorking
                 }
+
             }
             else {
-                if (breakTime >= 0) {
+                if (breakTime > 0) {
+                    breakTime--
                     header.innerHTML = 'Break'
                     displayTime(breakTime)
-                    breakTime--
                 }
                 else {
+                    header.innerHTML = 'WORK'
                     breakTime = BREAKING_TIME
-                    header.innerHTML = 'Work'
-                    isWorking = true
+                    isWorking = !isWorking
+
                     rounds++
-                    round.innerHTML = `Yopu have completed ${rounds} rounds`
+                    round.innerHTML = `You have completed ${rounds} rounds.`
+
                 }
+
             }
 
         }, 1000)
-    }
 
+    }
 
 }
 
@@ -707,9 +810,8 @@ const restartTimer = () => {
 
 
 start.addEventListener('click', startTime)
-restart.addEventListener('click', restart)
 pause.addEventListener('click', pauseTimer)
-
+restart.addEventListener('click', restartTimer)
 
 
 

@@ -356,38 +356,19 @@
 // *******************************************************************************
 
 
-// const productList = document.getElementById('product-list')
-// const cartItems = document.getElementById('cart-items')
-// const cartTotal = document.getElementById('cart-total')
 
 
-// const products = [
-//     { id: 1, name: 'Product 1', price: 29.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
-//     { id: 2, name: 'Product 2', price: 19.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
-//     { id: 3, name: 'Product 3', price: 39.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
-// ];
 
-// let cart = {}
+const productList = document.getElementById('product-list')
+const cartItems = document.getElementById('cart-items')
+const cartTotal = document.getElementById('cart-total')
 
 
-// const loadProducts = () => {
-//     products.forEach(product => {
-//         let productDiv = document.createElement('div')
-//         productDiv.classList.add('product')
-//         productDiv.innerHTML = `
-//         <img src= '${product.image} alt='${product.name} />
-//         <div >
-//         <h2>${product.name}</h2>
-//         <p>$${product.price.toFixed(2)}</p>
-//         </div>
-//         <button onlcick=addToCart(${product.id})>Add</button>
-//         `
-//         productList.appendChild(productDiv)
-//     })
+const products = [
+    { id: 1, name: 'Product 1', price: 29.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
+    { id: 2, name: 'Product 2', price: 19.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
+    { id: 3, name: 'Product 3', price: 39.99, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkTzvbCWtpEmxUGC3MqxlMjuGE8lp_NDJRJw&s' },
+];
 
-// }
+let cart = {}
 
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     loadProducts()
-// })
