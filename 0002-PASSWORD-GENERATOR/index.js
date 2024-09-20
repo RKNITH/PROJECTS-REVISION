@@ -526,6 +526,85 @@
 
 // *********************************************************************************************************
 
+// const inp = document.getElementById('inp')
+// const range = document.getElementById('range')
+// const upper = document.getElementById('upper')
+// const lower = document.getElementById('lower')
+// const num = document.getElementById('num')
+// const symbol = document.getElementById('symbol')
+// const value = document.getElementById('value')
+// const copy = document.getElementById('copy')
+// const generate = document.getElementById('generate')
+
+// const upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+// const lowerLetter = 'abcdefghijklmnopqrstuvwxyz'
+// const number = '1234567890'
+// const sym = '@#$%&'
+
+// let passwordLenght = 0
+
+// range.addEventListener('change', () => {
+//     value.innerHTML = range.value
+//     passwordLenght = range.value
+// })
+
+
+// const shuffleString = (str) => {
+//     let arr = str.split('')
+//     for (let i = str.length - 1; i > 0; i--) {
+//         let j = Math.floor(Math.random() * (i + 1))
+
+//         let temp = arr[i]
+//         arr[i] = arr[j]
+//         arr[j] = temp
+//     }
+//     return arr.join('') // Moved return outside the loop
+// }
+
+// console.log(shuffleString('ravi'));
+
+
+
+// const generatePassword = () => {
+//     let password = ''
+
+//     if (upper.checked) password += upperLetter
+//     if (lower.checked) password += lowerLetter
+//     if (num.checked) password += number
+//     if (symbol.checked) password += sym
+
+//     let pass = shuffleString(password)
+//     pass = pass.slice(0, passwordLenght)
+
+//     return pass
+
+// }
+
+// generate.addEventListener('click', () => {
+//     inp.value = ''
+//     if (generatePassword() === '') {
+//         alert('please select any of the check box')
+//         return
+//     }
+//     inp.value = generatePassword()
+// })
+
+// copy.addEventListener('click', () => {
+//     if (inp.value === '') {
+//         alert('please generate password first')
+//         return
+//     }
+//     window.navigator.clipboard.writeText(inp.value)
+//     inp.select()
+//     alert('passwod copied')
+// })
+
+
+
+
+
+//  **************************************************************************
+
 const inp = document.getElementById('inp')
 const range = document.getElementById('range')
 const upper = document.getElementById('upper')
@@ -545,23 +624,22 @@ let passwordLenght = 0
 
 range.addEventListener('change', () => {
     value.innerHTML = range.value
-    passwordLenght = range.value
+    passwordLenght = value.innerHTML
 })
 
 
 const shuffleString = (str) => {
-    let arr = str.split('')
-    for (let i = str.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1))
 
+    let arr = str.split('')
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
         let temp = arr[i]
         arr[i] = arr[j]
         arr[j] = temp
     }
-    return arr.join('') // Moved return outside the loop
+    return arr.join('')
 }
 
-console.log(shuffleString('ravi'));
 
 
 
@@ -573,29 +651,31 @@ const generatePassword = () => {
     if (num.checked) password += number
     if (symbol.checked) password += sym
 
-    let pass = shuffleString(password)
-    pass = pass.slice(0, passwordLenght)
+    password = shuffleString(password)
 
-    return pass
+    password = password.slice(0, passwordLenght)
+
+    return password
+
 
 }
 
 generate.addEventListener('click', () => {
-    inp.value = ''
     if (generatePassword() === '') {
-        alert('please select any of the check box')
+        alert('select any of them to generate password.')
         return
     }
     inp.value = generatePassword()
 })
 
+
 copy.addEventListener('click', () => {
-    if (inp.value === '') {
-        alert('please generate password first')
+    if (inp.value == '' || inp.value.lenght === 0) {
+        alert('first generate password')
         return
     }
+
     window.navigator.clipboard.writeText(inp.value)
     inp.select()
-    alert('passwod copied')
+    alert('password copied')
 })
-

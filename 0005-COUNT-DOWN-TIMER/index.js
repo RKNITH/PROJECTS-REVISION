@@ -421,6 +421,90 @@
 // ************************************************************************************
 
 
+// const eventTime = document.getElementById('event-time')
+// const hour = document.getElementById('hour')
+// const min = document.getElementById('min')
+// const sec = document.getElementById('sec')
+// const start = document.getElementById('start')
+// const pause = document.getElementById('pause')
+// const restart = document.getElementById('restart')
+
+// let timerId = null
+// let inputTime = 0
+
+// const formateTime = (time) => {
+//     return time < 10 ? `0${time}` : `${time}`
+// }
+
+// const displayTime = (time) => {
+//     let hours = Math.floor(time / 60 / 60)
+//     let minutes = Math.floor(time / 60)
+//     let seconds = Math.floor(time % 60)
+
+//     hour.innerHTML = formateTime(hours)
+//     min.innerHTML = formateTime(minutes)
+//     sec.innerHTML = formateTime(seconds)
+// }
+
+// start.addEventListener('click', () => {
+//     let timerVale = eventTime.value
+
+//     if (timerVale <= 0 || eventTime.value === '') {
+//         alert('Please enter valid time')
+//         return
+//     }
+
+//     if (!timerId) {
+//         if (inputTime === 0) {
+//             inputTime = timerVale
+//         }
+//         timerId = setInterval(() => {
+//             if (inputTime > 0) {
+//                 inputTime--
+//                 displayTime(inputTime)
+//             }
+//             else {
+//                 alert('Times Up')
+//                 clearInterval(timerId)
+//                 timerId = null
+//                 return
+//             }
+
+
+//         }, 1000);
+//     }
+
+// })
+
+// pause.addEventListener('click', () => {
+//     if (timerId) {
+//         clearInterval(timerId)
+//         timerId = null
+
+//     }
+// })
+
+// restart.addEventListener('click', () => {
+//     clearInterval(timerId)
+//     timerId = null
+//     inputTime = 0
+//     displayTime(0)
+//     eventTime.value = ''
+// })
+
+
+
+
+
+
+
+
+
+
+
+//  ****>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 const eventTime = document.getElementById('event-time')
 const hour = document.getElementById('hour')
 const min = document.getElementById('min')
@@ -432,55 +516,49 @@ const restart = document.getElementById('restart')
 let timerId = null
 let inputTime = 0
 
-const formateTime = (time) => {
+const formatTime = (time) => {
     return time < 10 ? `0${time}` : `${time}`
 }
 
 const displayTime = (time) => {
-    let hours = Math.floor(time / 60 / 60)
-    let minutes = Math.floor(time / 60)
-    let seconds = Math.floor(time % 60)
+    let hours = Math.floor(time / 3600)
+    let minutes = Math.floor((time % 3600) / 60)
+    let seconds = time % 60
 
-    hour.innerHTML = formateTime(hours)
-    min.innerHTML = formateTime(minutes)
-    sec.innerHTML = formateTime(seconds)
+    hour.innerHTML = formatTime(hours)
+    min.innerHTML = formatTime(minutes)
+    sec.innerHTML = formatTime(seconds)
 }
 
 start.addEventListener('click', () => {
-    let timerVale = eventTime.value
+    let timerValue = parseInt(eventTime.value, 10)
 
-    if (timerVale <= 0 || eventTime.value === '') {
-        alert('Please enter valid time')
+    if (isNaN(timerValue) || timerValue <= 0) {
+        alert('Please enter a valid time')
         return
     }
 
     if (!timerId) {
         if (inputTime === 0) {
-            inputTime = timerVale
+            inputTime = timerValue
         }
         timerId = setInterval(() => {
             if (inputTime > 0) {
-                inputTime--
                 displayTime(inputTime)
-            }
-            else {
-                alert('Times Up')
+                inputTime--
+            } else {
                 clearInterval(timerId)
                 timerId = null
-                return
+                alert('Times Up')
             }
-
-
-        }, 1000);
+        }, 1000)
     }
-
 })
 
 pause.addEventListener('click', () => {
     if (timerId) {
         clearInterval(timerId)
         timerId = null
-
     }
 })
 
@@ -488,6 +566,5 @@ restart.addEventListener('click', () => {
     clearInterval(timerId)
     timerId = null
     inputTime = 0
-    displayTime(0)
-    eventTime.value = ''
+    displayTime(0)  // Reset display to 00:00:00
 })

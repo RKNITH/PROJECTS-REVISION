@@ -248,6 +248,268 @@
 
 
 
+// const gameBoard = document.getElementById('gameBoard');
+// const restartButton = document.getElementById('restartButton');
+// const levelIndicator = document.getElementById('level');
+
+// // Variables for game state
+// let cards = [];
+// let flippedCards = [];
+// let matches = 0;
+// let level = 1;
+// let isProcessing = false;
+
+
+// function initGame() {
+//     level = parseInt(localStorage.getItem('memoryGameLevel'), 10) || 1
+
+//     matches = 0
+//     flippedCards = []
+//     cards = shuffle(generateCards(level))
+
+//     gameBoard.innerHTML = ''
+
+//     const gridSize = Math.ceil(Math.sqrt(cards.length))
+
+//     gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 100px)`
+//     levelIndicator.textContent = level
+
+//     cards.forEach(createCardElement)
+// }
+
+// function generateCards(level) {
+//     const cardValues = 'ABCDEFGH'.slice(0, level * 2)
+//     return [...cardValues, ...cardValues]
+// }
+
+
+// function shuffle(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+//     return array;
+// }
+
+// function createCardElement(card) {
+//     const cardElement = document.createElement('div');
+//     cardElement.classList.add('card');
+//     cardElement.dataset.value = card;
+
+//     const cardInner = document.createElement('div');
+//     cardInner.classList.add('card-inner');
+
+//     const cardFront = document.createElement('div');
+//     cardFront.classList.add('card-front');
+//     cardFront.textContent = '?';
+
+//     const cardBack = document.createElement('div');
+//     cardBack.classList.add('card-back');
+//     cardBack.textContent = card;
+
+//     cardInner.appendChild(cardFront);
+//     cardInner.appendChild(cardBack);
+//     cardElement.appendChild(cardInner);
+
+//     // Attach event listener directly to each card element
+//     cardElement.addEventListener('click', () => flipCard(cardElement));
+//     gameBoard.appendChild(cardElement);
+// }
+
+// function flipCard(cardElement) {
+//     if (isProcessing || cardElement.classList.add('flipped') || flippedCards.length >= 2) return
+
+//     cardElement.classList.add('flipped')
+//     flippedCards.push(cardElement)
+
+//     if (flippedCards.length === 2) {
+//         isProcessing = true
+//         setTimeout(checkMatch, 600)
+//     }
+// }
+
+
+// function checkMatch() {
+//     const [firstCard, secondCard] = flippedCards
+
+//     if (firstCard.dataset.value === secondCard.dataset.value) {
+//         matches++
+
+//         if (matches === cards.length / 2) {
+//             setTimeout(nextLevel, 1000)
+//         }
+
+//     }
+//     else {
+//         firstCard.classList.remove('flipped')
+//         secondCard.classList.remove('flipped')
+//     }
+
+//     flippedCards = []
+//     isProcessing = false
+// }
+
+// function nextLevel() {
+//     level++
+//     localStorage.setItem('memoryGameLevel', level)
+//     initGame()
+// }
+
+
+// restartButton.addEventListener('click', () => {
+//     level = 1
+//     localStorage.removeItem('memoryGameLevel')
+//     initGame()
+// })
+
+// initGame()
+
+//
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+// const gameBoard = document.getElementById('gameBoard');
+// const restartButton = document.getElementById('restartButton');
+// const levelIndicator = document.getElementById('level');
+
+// // Variables for game state
+// let cards = [];
+// let flippedCards = [];
+// let matches = 0;
+// let level = 1;
+// let isProcessing = false;
+
+
+
+
+// const generateCards = (level) => {
+//     const cardValues = 'ABCDEFGH'.slice(0, level * 2)
+//     return [...cardValues, ...cardValues]
+// }
+
+// // console.log(generateCards(4));
+
+
+// const shuffleCards = (array) => {
+//     for (let i = array.length - 1; i >= 0; i--) {
+//         let j = Math.floor(Math.random() * (i + 1))
+
+//         let temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }
+//     return array
+// }
+// // console.log(shuffleCards(generateCards(2)));
+
+
+
+
+
+// function checkMatch() {
+//     const [firstCard, secondCard] = flippedCards
+
+//     if (firstCard.dataset.value === secondCard.dataset.value) {
+//         matches++
+
+//         if (matches === cards.length / 2) {
+//             setTimeout(nextLevel, 1000)
+//         }
+
+//     }
+//     else {
+//         firstCard.classList.remove('flipped')
+//         secondCard.classList.remove('flipped')
+//     }
+
+//     flippedCards = []
+//     isProcessing = false
+// }
+
+// function nextLevel() {
+//     level++
+//     localStorage.setItem('memoryGameLevel', level)
+//     initGame()
+// }
+
+
+
+
+
+
+// function flipCard(cardElement) {
+//     if (isProcessing || cardElement.classList.add('flipped') || flippedCards.length >= 2) return
+
+//     cardElement.classList.add('flipped')
+//     flippedCards.push(cardElement)
+
+//     if (flippedCards.length === 2) {
+//         isProcessing = true
+//         setTimeout(checkMatch, 600)
+//     }
+// }
+
+
+// function createCardElement(card) {
+//     const cardElement = document.createElement('div');
+//     cardElement.classList.add('card');
+//     cardElement.dataset.value = card;
+
+//     const cardInner = document.createElement('div');
+//     cardInner.classList.add('card-inner');
+
+//     const cardFront = document.createElement('div');
+//     cardFront.classList.add('card-front');
+//     cardFront.textContent = '?';
+
+//     const cardBack = document.createElement('div');
+//     cardBack.classList.add('card-back');
+//     cardBack.textContent = card;
+
+//     cardInner.appendChild(cardFront);
+//     cardInner.appendChild(cardBack);
+//     cardElement.appendChild(cardInner);
+
+//     // Attach event listener directly to each card element
+//     cardElement.addEventListener('click', () => flipCard(cardElement));
+//     gameBoard.appendChild(cardElement);
+// }
+
+
+
+
+// const initGame = () => {
+//     let level = parseInt((localStorage.getItem('memoryGameLevel')), 10) || 1
+
+//     matches = 0
+//     flippedCards = []
+
+//     cards = shuffleCards(generateCards(level))
+//     gameBoard.innerHTML = ''
+//     levelIndicator.textContent = level
+//     let gridSize = Math.ceil(Math.sqrt(cards.length))
+
+//     gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 100px)`
+
+//     cards.forEach(createCardElement)
+// }
+
+// restartButton.addEventListener('click', () => {
+//     level = 1
+//     localStorage.removeItem('memoryGameLevel')
+//     initGame()
+// })
+
+// initGame()
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
 const gameBoard = document.getElementById('gameBoard');
 const restartButton = document.getElementById('restartButton');
 const levelIndicator = document.getElementById('level');
@@ -260,73 +522,27 @@ let level = 1;
 let isProcessing = false;
 
 
-function initGame() {
-    level = parseInt(localStorage.getItem('memoryGameLevel'), 10) || 1
-
-    matches = 0
-    flippedCards = []
-    cards = shuffle(generateCards(level))
-
-    gameBoard.innerHTML = ''
-
-    const gridSize = Math.ceil(Math.sqrt(cards.length))
-
-    gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 100px)`
-    levelIndicator.textContent = level
-
-    cards.forEach(createCardElement)
-}
-
-function generateCards(level) {
+const generateCards = (level) => {
     const cardValues = 'ABCDEFGH'.slice(0, level * 2)
     return [...cardValues, ...cardValues]
 }
 
+const shuffleCards = (array) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        let temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
     }
-    return array;
+    return array
 }
 
-function createCardElement(card) {
-    const cardElement = document.createElement('div');
-    cardElement.classList.add('card');
-    cardElement.dataset.value = card;
+// console.log(shuffleCards(generateCards(2)));
 
-    const cardInner = document.createElement('div');
-    cardInner.classList.add('card-inner');
 
-    const cardFront = document.createElement('div');
-    cardFront.classList.add('card-front');
-    cardFront.textContent = '?';
 
-    const cardBack = document.createElement('div');
-    cardBack.classList.add('card-back');
-    cardBack.textContent = card;
 
-    cardInner.appendChild(cardFront);
-    cardInner.appendChild(cardBack);
-    cardElement.appendChild(cardInner);
-
-    // Attach event listener directly to each card element
-    cardElement.addEventListener('click', () => flipCard(cardElement));
-    gameBoard.appendChild(cardElement);
-}
-
-function flipCard(cardElement) {
-    if (isProcessing || cardElement.classList.add('flipped') || flippedCards.length >= 2) return
-
-    cardElement.classList.add('flipped')
-    flippedCards.push(cardElement)
-
-    if (flippedCards.length === 2) {
-        isProcessing = true
-        setTimeout(checkMatch, 600)
-    }
-}
 
 
 function checkMatch() {
@@ -356,10 +572,67 @@ function nextLevel() {
 }
 
 
-restartButton.addEventListener('click', () => {
-    level = 1
-    localStorage.removeItem('memoryGameLevel')
-    initGame()
-})
+
+
+
+
+function flipCard(cardElement) {
+    if (isProcessing || cardElement.classList.add('flipped') || flippedCards.length >= 2) return
+
+    cardElement.classList.add('flipped')
+    flippedCards.push(cardElement)
+
+    if (flippedCards.length === 2) {
+        isProcessing = true
+        setTimeout(checkMatch, 600)
+    }
+}
+
+
+
+function createCardElement(card) {
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
+    cardElement.dataset.value = card;
+
+    const cardInner = document.createElement('div');
+    cardInner.classList.add('card-inner');
+
+    const cardFront = document.createElement('div');
+    cardFront.classList.add('card-front');
+    cardFront.textContent = '?';
+
+    const cardBack = document.createElement('div');
+    cardBack.classList.add('card-back');
+    cardBack.textContent = card;
+
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+    cardElement.appendChild(cardInner);
+
+    // Attach event listener directly to each card element
+    cardElement.addEventListener('click', () => flipCard(cardElement));
+    gameBoard.appendChild(cardElement);
+}
+
+const initGame = () => {
+    let level = parseInt(localStorage.getItem('levelValue'), 10) || 1
+
+
+    matches = 0
+    flippedCards = []
+
+    gameBoard.innerHTML = ''
+    levelIndicator.value = level
+
+    cards = shuffleCards(generateCards(level))
+
+    let gridSize = Math.ceil(Math.sqrt(cards.length))
+
+    gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 100px)`
+
+    cards.forEach(createCardElement)
+
+}
 
 initGame()

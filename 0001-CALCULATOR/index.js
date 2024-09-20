@@ -235,13 +235,44 @@
 
 
 // ******************************************************************
+// const inp = document.getElementById('inp')
+// const buttons = document.querySelectorAll('button')
+
+
+// buttons.forEach(button => {
+//     button.addEventListener('click', () => {
+//         inp.value = ''
+//         if (button.innerHTML === '=') {
+//             inp.value = eval(inp.value)
+//         }
+//         else if (button.innerHTML === 'AC') {
+//             inp.value = ''
+//         }
+//         else if (button.innerHTML === 'DEL') {
+//             inp.value = inp.value.slice(0, inp.value.lenght - 1)
+//         }
+//         else {
+//             inp.value = inp.value.replace(/✖/g, '*').replace(/÷/g, '/')
+//             inp.value += button.innerHTML
+//         }
+//     })
+
+// });
+
+
+
+
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 const inp = document.getElementById('inp')
 const buttons = document.querySelectorAll('button')
 
 
 buttons.forEach(button => {
+    inp.value = ''
     button.addEventListener('click', () => {
-        inp.value = ''
         if (button.innerHTML === '=') {
             inp.value = eval(inp.value)
         }
@@ -249,15 +280,15 @@ buttons.forEach(button => {
             inp.value = ''
         }
         else if (button.innerHTML === 'DEL') {
-            inp.value = inp.value.slice(0, inp.value.lenght - 1)
+            inp.value = inp.value.slice(0, inp.value.length - 1)
         }
         else {
             inp.value = inp.value.replace(/✖/g, '*').replace(/÷/g, '/')
-            inp.value = button.innerHTML
+            inp.value += button.innerHTML
         }
-    })
 
-});
+    })
+})
 
 
 

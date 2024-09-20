@@ -154,6 +154,83 @@
 
 
 
+// const products = [
+//     { id: 1, name: "Smartphone", category: "electronics", price: 499, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSK8_BdPpbzhlPqJTQBXUofFwDAyrUceBwTg&s" },
+//     { id: 2, name: "Laptop", category: "electronics", price: 899, image: "https://m.media-amazon.com/images/I/61+r3+JstZL._SX450_.jpg" },
+//     { id: 3, name: "T-shirt", category: "clothing", price: 19, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcAUioMRqtwqMnztNK9CB98U35MmEMw4qVQg&s" },
+//     { id: 4, name: "Sofa", category: "furniture", price: 299, image: "https://t4.ftcdn.net/jpg/04/23/65/57/360_F_423655780_VSZ03nlUy0s1RP39cRWUHLj2bbWi2ebO.jpg" },
+//     { id: 5, name: "Jacket", category: "clothing", price: 79, image: "https://media.istockphoto.com/id/1342121693/photo/blue-sport-winter-jacket-isolated-on-white-warm-clothes.jpg?s=612x612&w=0&k=20&c=l-hDjB6RgtSDSDnqJHOJAQds_2xEBPL9ZncaFQdcVtQ=" },
+//     { id: 6, name: "TV", category: "electronics", price: 599, image: "https://m.media-amazon.com/images/I/31aDWE4msZL.jpg" }
+// ];
+
+// // Get DOM elements
+// const productList = document.getElementById('product-list');
+// const searchInput = document.getElementById('search');
+// const categoryFilter = document.getElementById('category-filter');
+// const priceSort = document.getElementById('price-sort');
+
+// const displayProducts = (products) => {
+//     productList.innerHTML = ''
+//     products.forEach(product => {
+//         let productDiv = document.createElement('div')
+//         productDiv.classList.add('product')
+//         productDiv.innerHTML = `
+//         <img src=${product.image} alt=''/>,
+//         <h3>${product.name}</h3>
+//         <p>${product.category}</p>
+//         <p>$${product.price}</p>
+
+//         `
+//         productList.appendChild(productDiv)
+//     });
+
+// }
+
+// const filteredProducts = () => {
+//     let searchValue = products
+
+//     // SEARCHING:
+//     let searchText = searchInput.value.trim()
+//     searchValue = searchValue.filter(prod => prod.name.toLocaleLowerCase().includes(searchText))
+
+//     // SORTING by category:
+//     let productCategory = categoryFilter.value
+//     if (productCategory !== 'all') {
+//         searchValue = searchValue.filter(prod => prod.category === productCategory)
+//     }
+
+//     //SORTING
+
+//     let sortValue = priceSort.value
+
+
+//     if (sortValue === 'asc') {
+//         searchValue = searchValue.sort((a, b) => a.price - b.price)
+//     }
+//     else if (sortValue === 'desc') {
+//         searchValue = searchValue.sort((a, b) => b.price - a.price)
+//     }
+
+
+
+//     displayProducts(searchValue)
+
+// }
+
+// displayProducts(products)
+
+// searchInput.addEventListener('input', filteredProducts)
+// categoryFilter.addEventListener('change', filteredProducts);
+// priceSort.addEventListener('change', filteredProducts);
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
 const products = [
     { id: 1, name: "Smartphone", category: "electronics", price: 499, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSK8_BdPpbzhlPqJTQBXUofFwDAyrUceBwTg&s" },
     { id: 2, name: "Laptop", category: "electronics", price: 899, image: "https://m.media-amazon.com/images/I/61+r3+JstZL._SX450_.jpg" },
@@ -169,61 +246,67 @@ const searchInput = document.getElementById('search');
 const categoryFilter = document.getElementById('category-filter');
 const priceSort = document.getElementById('price-sort');
 
+
+
 const displayProducts = (products) => {
-    productList.innerHTML = ''
-    products.forEach(product => {
+    products.forEach(prod => {
         let productDiv = document.createElement('div')
         productDiv.classList.add('product')
         productDiv.innerHTML = `
-        <img src=${product.image} alt=''/>,
-        <h3>${product.name}</h3>
-        <p>${product.category}</p>
-        <p>$${product.price}</p>
-
+        <img src =${prod.image} />
+        <h2>${prod.name}</h2>
+        <p>${prod.category}</p>
+        <p>${prod.price}</p>
         `
-        productList.appendChild(productDiv)
-    });
 
+        productList.append(productDiv)
+    });
 }
+
+
+
+
 
 const filteredProducts = () => {
-    let searchValue = products
+    let filterProduct = products
+    // searching filter
+    productList.innerHTML = ''
 
-    // SEARCHING:
-    let searchText = searchInput.value.trim()
-    searchValue = searchValue.filter(prod => prod.name.toLocaleLowerCase().includes(searchText))
+    let searchValue = searchInput.value.trim().toLowerCase()
+    filterProduct = filterProduct.filter(prod => prod.name.toLocaleLowerCase().includes(searchValue))
 
-    // SORTING by category:
-    let productCategory = categoryFilter.value
-    if (productCategory !== 'all') {
-        searchValue = searchValue.filter(prod => prod.category === productCategory)
+
+
+    //  category filter
+
+
+    let categoryValue = categoryFilter.value
+    if (categoryValue !== 'all') {
+        filterProduct = filterProduct.filter(prod => prod.category === categoryValue)
     }
 
-    //SORTING
+    // price sort
 
-    let sortValue = priceSort.value
+    let priceValue = priceSort.value
 
-
-    if (sortValue === 'asc') {
-        searchValue = searchValue.sort((a, b) => a.price - b.price)
+    if (priceValue === 'asc') {
+        filterProduct = filterProduct.sort((a, b) => a.price - b.price)
     }
-    else if (sortValue === 'desc') {
-        searchValue = searchValue.sort((a, b) => b.price - a.price)
+    else if (priceValue === 'desc') {
+        filterProduct = filterProduct.sort((a, b) => b.price - a.price)
     }
 
 
 
-    displayProducts(searchValue)
+
+    displayProducts(filterProduct)
 
 }
+
 
 displayProducts(products)
 
 searchInput.addEventListener('input', filteredProducts)
 categoryFilter.addEventListener('change', filteredProducts);
 priceSort.addEventListener('change', filteredProducts);
-
-
-
-
 

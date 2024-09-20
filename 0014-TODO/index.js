@@ -828,6 +828,149 @@
 
 // ***********************************************************************
 
+// const inputBox = document.getElementById('inp');
+// const addBtn = document.getElementById('add');
+// const todoList = document.getElementById('result');
+
+// let editTodo = null;
+
+// const addTodo = () => {
+
+//     let inputText = inputBox.value.trim()
+//     if (inputBox.value === '' || inputText.lenght === 0) {
+//         alert('please write something inside input box...')
+//         return
+//     }
+//     if (addBtn.innerHTML === 'Edit') {
+//         let oldText = editTodo.querySelector('p').innerHTML
+//         let newText = inputBox.value
+//         editTodo.querySelector('p').innerHTML = newText
+//         editLocalTodos(oldText, newText)
+//         inputBox.value = ''
+//     }
+//     else {
+//         let li = document.createElement('li')
+//         let p = document.createElement('p')
+
+//         p.innerHTML = inputText
+//         li.append(p)
+
+//         let editBTn = document.createElement('button')
+//         editBTn.innerHTML = 'Edit'
+//         editBTn.classList.add('delBtn', 'edit')
+//         li.appendChild(editBTn)
+
+//         let delBTn = document.createElement('button')
+//         delBTn.innerHTML = 'Remove'
+//         delBTn.classList.add('delBtn', 'del')
+//         li.appendChild(delBTn)
+
+//         todoList.append(li)
+//         saveLocalTodo(inputText)
+//         inputBox.value = ''
+//     }
+// }
+
+// const updateTodo = (e) => {
+//     if (e.target.innerHTML === 'Remove') {
+//         todoList.removeChild(e.target.parentElement)
+//         deleteLocalTodos(e.target.parentElement)
+//     }
+//     if (e.target.innerHTML === 'Edit') {
+//         inputBox.value = e.target.parentElement.querySelector('p').innerHTML
+//         editTodo = e.target.parentElement
+//         addBtn.innerHTML = 'Edit'
+//         inputBox.focus()
+//     }
+// }
+// const saveLocalTodo = (todo) => {
+//     let todos = []
+//     if (localStorage.getItem('todos') === null) {
+//         todos = []
+//     }
+//     else {
+//         todos = JSON.parse(localStorage.getItem('todos'))
+//     }
+//     todos.push(todo)
+//     localStorage.setItem('todos', JSON.stringify(todos))
+
+// }
+// const getLocalTodos = () => {
+//     let todos
+//     if (localStorage.getItem('todos') === null) {
+//         todos = []
+//     }
+//     else {
+//         todos = JSON.parse(localStorage.getItem('todos'))
+//         todos.forEach(todo => {
+//             let li = document.createElement('li')
+//             let p = document.createElement('p')
+
+//             p.innerHTML = todo
+//             li.append(p)
+
+//             let editBTn = document.createElement('button')
+//             editBTn.innerHTML = 'Edit'
+//             editBTn.classList.add('delBtn', 'edit')
+//             li.appendChild(editBTn)
+
+//             let delBTn = document.createElement('button')
+//             delBTn.innerHTML = 'Remove'
+//             delBTn.classList.add('delBtn', 'del')
+//             li.appendChild(delBTn)
+//             todoList.append(li)
+//         });
+//     }
+// }
+
+
+
+// const editLocalTodos = (oldTodo, newTodo) => {
+//     let todos = JSON.parse(localStorage.getItem('todos'))
+//     let todoIndex = todos.indexOf(oldTodo)
+//     if (todoIndex != -1) {
+//         todos[todoIndex] = newTodo
+//         localStorage.setItem('todos', JSON.stringify(todos))
+//     }
+
+
+// }
+
+// const deleteLocalTodos = (todo) => {
+//     let todos = []
+//     if (localStorage.getItem('todos') === null) {
+//         todos = []
+//     }
+//     else {
+//         todos = JSON.parse(localStorage.getItem('todos'))
+//     }
+//     const todoIndex = todos.indexOf(todo)
+//     todos.splice(todoIndex, 1)
+//     localStorage.setItem('todos', JSON.stringify(todos))
+// }
+
+
+
+// addBtn.addEventListener('click', addTodo)
+// todoList.addEventListener('click', updateTodo)
+// document.addEventListener('DOMContentLoaded', getLocalTodos)
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  ****************>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
 const inputBox = document.getElementById('inp');
 const addBtn = document.getElementById('add');
 const todoList = document.getElementById('result');
@@ -835,10 +978,9 @@ const todoList = document.getElementById('result');
 let editTodo = null;
 
 const addTodo = () => {
-
     let inputText = inputBox.value.trim()
-    if (inputBox.value === '' || inputText.lenght === 0) {
-        alert('please write something inside input box...')
+    if (inputText === '') {
+        alert('please write somethings..')
         return
     }
     if (addBtn.innerHTML === 'Edit') {
@@ -846,7 +988,10 @@ const addTodo = () => {
         let newText = inputBox.value
         editTodo.querySelector('p').innerHTML = newText
         editLocalTodos(oldText, newText)
+
+        addBtn.innerHTML = 'ADD'
         inputBox.value = ''
+
     }
     else {
         let li = document.createElement('li')
@@ -855,20 +1000,23 @@ const addTodo = () => {
         p.innerHTML = inputText
         li.append(p)
 
-        let editBTn = document.createElement('button')
-        editBTn.innerHTML = 'Edit'
-        editBTn.classList.add('delBtn', 'edit')
-        li.appendChild(editBTn)
+        let editbtn = document.createElement('button')
+        editbtn.innerText = 'Edit'
+        editbtn.classList.add('delBtn', 'edit')
+        li.appendChild(editbtn)
 
-        let delBTn = document.createElement('button')
-        delBTn.innerHTML = 'Remove'
-        delBTn.classList.add('delBtn', 'del')
-        li.appendChild(delBTn)
+
+        let delbtn = document.createElement('button')
+        delbtn.innerText = 'Remove'
+        delbtn.classList.add('delBtn', 'del')
+        li.appendChild(delbtn)
 
         todoList.append(li)
-        saveLocalTodo(inputText)
         inputBox.value = ''
+        saveLocalTodo(inputText)
     }
+
+
 }
 
 const updateTodo = (e) => {
@@ -878,11 +1026,15 @@ const updateTodo = (e) => {
     }
     if (e.target.innerHTML === 'Edit') {
         inputBox.value = e.target.parentElement.querySelector('p').innerHTML
-        editTodo = e.target.parentElement
-        addBtn.innerHTML = 'Edit'
         inputBox.focus()
+        addBtn.innerHTML = 'Edit'
+        editTodo = e.target.parentElement
     }
+
 }
+
+
+
 const saveLocalTodo = (todo) => {
     let todos = []
     if (localStorage.getItem('todos') === null) {
@@ -893,8 +1045,8 @@ const saveLocalTodo = (todo) => {
     }
     todos.push(todo)
     localStorage.setItem('todos', JSON.stringify(todos))
-
 }
+
 const getLocalTodos = () => {
     let todos
     if (localStorage.getItem('todos') === null) {
@@ -902,23 +1054,30 @@ const getLocalTodos = () => {
     }
     else {
         todos = JSON.parse(localStorage.getItem('todos'))
+
         todos.forEach(todo => {
+
             let li = document.createElement('li')
             let p = document.createElement('p')
 
             p.innerHTML = todo
             li.append(p)
 
-            let editBTn = document.createElement('button')
-            editBTn.innerHTML = 'Edit'
-            editBTn.classList.add('delBtn', 'edit')
-            li.appendChild(editBTn)
+            let editbtn = document.createElement('button')
+            editbtn.innerText = 'Edit'
+            editbtn.classList.add('delBtn', 'edit')
+            li.appendChild(editbtn)
 
-            let delBTn = document.createElement('button')
-            delBTn.innerHTML = 'Remove'
-            delBTn.classList.add('delBtn', 'del')
-            li.appendChild(delBTn)
+
+            let delbtn = document.createElement('button')
+            delbtn.innerText = 'Remove'
+            delbtn.classList.add('delBtn', 'del')
+            li.appendChild(delbtn)
+
             todoList.append(li)
+
+
+
         });
     }
 }
@@ -927,16 +1086,17 @@ const getLocalTodos = () => {
 
 const editLocalTodos = (oldTodo, newTodo) => {
     let todos = JSON.parse(localStorage.getItem('todos'))
+
     let todoIndex = todos.indexOf(oldTodo)
     if (todoIndex != -1) {
         todos[todoIndex] = newTodo
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
-
 }
 
 const deleteLocalTodos = (todo) => {
+
     let todos = []
     if (localStorage.getItem('todos') === null) {
         todos = []
@@ -944,13 +1104,21 @@ const deleteLocalTodos = (todo) => {
     else {
         todos = JSON.parse(localStorage.getItem('todos'))
     }
-    const todoIndex = todos.indexOf(todo)
+
+    let todoIndex = todos.indexOf(todo)
     todos.splice(todoIndex, 1)
     localStorage.setItem('todos', JSON.stringify(todos))
+
+
 }
+
+
+
+
 
 
 
 addBtn.addEventListener('click', addTodo)
 todoList.addEventListener('click', updateTodo)
+
 document.addEventListener('DOMContentLoaded', getLocalTodos)
